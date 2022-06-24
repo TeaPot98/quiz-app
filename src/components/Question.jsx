@@ -5,10 +5,16 @@ import {
   Divider,
 } from '@mui/material'
 
+import ProgressBar from './ProgressBar'
+
 const Question = () => {
   const styles = {
     container: {
       textAlign: 'center',
+    },
+    progressBars: {
+      display: 'flex',
+
     },
     sectionTitle: {
       color: '#066FDE',
@@ -34,6 +40,11 @@ const Question = () => {
   
   return (
     <Box sx={styles.container}>
+      <Box sx={styles.progressBars}>
+        {[0, 1, 2].map(n =>
+          <ProgressBar color="#066FDE" completed={Math.abs(50*-n)} index={n+1} />
+        )}
+      </Box>
       <Typography sx={styles.sectionTitle}>Your Profile</Typography>
       <Divider />
       <Typography sx={styles.question}>So we can get to know you better, tell us about your relationship status.</Typography>
