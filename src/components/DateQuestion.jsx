@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Box,
   Typography,
@@ -6,16 +7,19 @@ import {
 } from '@mui/material'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 
-import { useNavigate, useParams } from 'react-router-dom'
-import { useContext } from 'react'
-import QuizContext from '../state/QuizContext'
+import { useNavigate } from 'react-router-dom'
 
 import ProgressBar from './ProgressBar'
-import QuestionButton from './QestionButton'
+import SelectInputField from './SelectInputField'
+import { months, years, days } from '../data'
+import Button from './Button'
 
-const Question = ({ question }) => {
+const DateQuestion = ({ question }) => {
   const navigate = useNavigate()
-  
+  const [month, setMonth] = useState('')
+  const [day, setDay] = useState('')
+  const [year, setYear] = useState('')
+  console.log(days)
   const styles = {
     container: {
       textAlign: 'center',
@@ -50,6 +54,18 @@ const Question = ({ question }) => {
       my: '2rem'
     },
   }
+
+  const handleMonthChange = (event) => {
+    setMonth(event.target.value)
+  }
+
+  const handleDayChange = (event) => {
+    setDay(event.target.value)
+  }
+
+  const handleYearChange = (event) => {
+    setYear(event.target.value)
+  }
   
   return (
     <Box sx={styles.container}>
@@ -68,11 +84,12 @@ const Question = ({ question }) => {
       {question.text.map(t => 
         <Typography key={t} sx={styles.question}>{t}</Typography>
       )}
-      {question.answers.map(a => 
-        <QuestionButton key={a.id} href={`/${a.nextPath}`}>{a.text}</QuestionButton>
-      )}
+      <SelectInputField value={month} label={'Month'} onChange={handleMonthChange} dataList={months} />
+      <SelectInputField value={day} label={'Day'} onChange={handleDayChange} dataList={days} />
+      <SelectInputField value={year} label={'Year'} onChange={handleYearChange} dataList={years} />
+      <Button disabled={!day || !month || !year} href={`/${question.nextPath}`}>Next</Button>
     </Box>
   )
 }
 
-export default Question
+export default DateQuestion

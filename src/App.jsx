@@ -8,7 +8,10 @@ import {
 } from 'react-router-dom'
 
 import Home from './components/Home'
+import HyperPersonalized from './components/HyperPersonalized'
 import Question from './components/Question'
+import QuizContainer from './components/QuizContainer'
+import TransitionPage from './components/TransitionPage'
 
 const App = () => {
   
@@ -16,8 +19,10 @@ const App = () => {
   return (
     <Container maxWidth="xs">
       <Routes>
-        <Route path="/relationship-status" element={<Question />} />
         <Route path="/" element={<Home />} />
+        <Route path="/transition" element={<TransitionPage />} />
+        <Route path="/profile-hyperpersonalized" element={<HyperPersonalized />} />
+        <Route path="/:questionPath" element={<QuizContainer />} />
       </Routes>
     </Container>
   )
