@@ -13,12 +13,15 @@ import ProgressBar from './ProgressBar'
 import SelectInputField from './SelectInputField'
 import { months, years, days } from '../data'
 import Button from './Button'
+import useUserData from '../hooks/useUserData'
 
 const DateQuestion = ({ question }) => {
   const navigate = useNavigate()
-  const [month, setMonth] = useState('')
-  const [day, setDay] = useState('')
-  const [year, setYear] = useState('')
+  const {data, setAnswer} = useUserData()
+  const isSaved = data.has(question.path)
+  const [month, setMonth] = useState(isSaved ? data.get(question.path)[0].month : '')
+  const [day, setDay] = useState(isSaved ? data.get(question.path)[0].day : '')
+  const [year, setYear] = useState(isSaved ? data.get(question.path)[0].year : '')
   console.log(days)
   const styles = {
     container: {
@@ -66,6 +69,18 @@ const DateQuestion = ({ question }) => {
   const handleYearChange = (event) => {
     setYear(event.target.value)
   }
+
+  const handleDateSet = () => {
+    setAnswer({
+      name: question.path,
+      value: [{
+        day: day,
+        month: month,
+        year: year
+      }]
+    })
+    navigate(`/${question.nextPath}`)
+  }
   
   return (
     <Box sx={styles.container}>
@@ -87,7 +102,7 @@ const DateQuestion = ({ question }) => {
       <SelectInputField value={month} label={'Month'} onChange={handleMonthChange} dataList={months} />
       <SelectInputField value={day} label={'Day'} onChange={handleDayChange} dataList={days} />
       <SelectInputField value={year} label={'Year'} onChange={handleYearChange} dataList={years} />
-      <Button disabled={!day || !month || !year} href={`/${question.nextPath}`}>Next</Button>
+      <Button disabled={!day || !month || !year} onClick={handleDateSet}>Next</Button>
     </Box>
   )
 }

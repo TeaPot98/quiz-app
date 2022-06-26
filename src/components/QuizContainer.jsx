@@ -12,9 +12,9 @@ const QuizContainer = () => {
   const { questionPath } = useParams()
   const questionMap = useContext(QuizContext)
   const question = questionMap[questionPath]
-  console.log(question)
-  console.log(Object.keys(questionMap))
-  console.log(questionMap)
+  // console.log(question)
+  // console.log(Object.keys(questionMap))
+  // console.log(questionMap)
 
   const renderContent = () => {
     switch (question.type) {

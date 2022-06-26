@@ -22,10 +22,10 @@ const Button = ({ children, onClick = () => {}, secondaryColor = false, fullWidt
     }
   }
 
-  let hrefProps = href ? {
-    component: Link,
-    to: href
-  } : null
+  // let hrefProps = href ? {
+  //   component: Link,
+  //   to: href
+  // } : null
   
   return (
     <MuiButton 
@@ -33,7 +33,7 @@ const Button = ({ children, onClick = () => {}, secondaryColor = false, fullWidt
       variant="contained" 
       onClick={onClick}
       disabled={disabled}
-      {...hrefProps}
+      // {...hrefProps}
       disableRipple 
       disableElevation
     >

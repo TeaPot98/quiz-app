@@ -1,6 +1,6 @@
 import Button from './Button'
 
-const QuestionButton = ({ children, onClick = () => {}, isSelected = false, href }) => {
+const QuestionButton = ({ children, onClick = () => {}, isSelected = false }) => {
   const styles = {
     questionButton: {
       width: '90%',
@@ -23,7 +23,7 @@ const QuestionButton = ({ children, onClick = () => {}, isSelected = false, href
       onClick={onClick}
       sx={styles.questionButton}
       secondaryColor={!isSelected}
-      href={href}
+      // href={href}
     >
       {children}
     </Button>

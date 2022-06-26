@@ -17,15 +17,14 @@ export const UserDataProvider = ({ children }) => {
   }
 
   const value = {
-    data: {
-      ...state
-    },
+    data: state,
     setAnswer
   }
 
-  return <UserDataProvider.Provider
+  return <UserDataContext.Provider
     value={value}
   >
     {children}
-  </UserDataProvider.Provider>
+  </UserDataContext.Provider>
 }
+

@@ -7,12 +7,18 @@ import {
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 
 import { useNavigate } from 'react-router-dom'
+import useUserData from '../hooks/useUserData'
 
 import ProgressBar from './ProgressBar'
 import QuestionButton from './QestionButton'
 
 const Question = ({ question }) => {
   const navigate = useNavigate()
+  const {data, setAnswer} = useUserData()
+  console.log('The data from question >>>', data)
+  // if (data.has(question.path)) {
+  //   console.log('The data first .>', data[0])
+  // }
   
   const styles = {
     container: {
@@ -48,6 +54,15 @@ const Question = ({ question }) => {
       my: '2rem'
     },
   }
+
+  const handleAnswerSelect = (event, answer) => {
+    event.preventDefault()
+    setAnswer({
+      name: question.path, 
+      value: [{id: answer.id, text: answer.text}]
+    })
+    navigate(`/${answer.nextPath}`)
+  }
   
   return (
     <Box sx={styles.container}>
@@ -67,7 +82,19 @@ const Question = ({ question }) => {
         <Typography key={t} sx={styles.question}>{t}</Typography>
       )}
       {question.answers.map(a => 
-        <QuestionButton key={a.id} href={`/${a.nextPath}`}>{a.text}</QuestionButton>
+        <QuestionButton 
+          key={a.id} 
+          href={`/${a.nextPath}`}
+          onClick={(event) => handleAnswerSelect(event, a)}
+          isSelected={(() => {
+            if (data.has(question.path) && data.get(question.path)[0].id === a.id) {
+              return true
+            }
+            return false
+          })()}
+        >
+          {a.text}
+        </QuestionButton>
       )}
     </Box>
   )

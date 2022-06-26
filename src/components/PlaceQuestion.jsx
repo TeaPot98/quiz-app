@@ -12,10 +12,13 @@ import { useNavigate } from 'react-router-dom'
 import ProgressBar from './ProgressBar'
 import PlaceInputField from './SearchInputField'
 import Button from './Button'
+import useUserData from '../hooks/useUserData'
 
 const PlaceQuestion = ({ question }) => {
   const navigate = useNavigate()
-  const [place, setPlace] = useState('')
+  const {data, setAnswer} = useUserData()
+  const isSaved = data.has(question.path)
+  const [place, setPlace] = useState(isSaved ? data.get(question.path)[0].place : '')
   const styles = {
     container: {
       textAlign: 'center',
@@ -52,7 +55,18 @@ const PlaceQuestion = ({ question }) => {
   }
 
   const handlePlaceChange = (event) => {
+    setAnswer({
+      name: question.path,
+      value: [{
+        place: place
+      }]
+    })
     setPlace(event.target.value)
+  }
+
+  const handlePlaceSet = () => {
+
+    navigate(`/${question.nextPath}`)
   }
   
   return (
@@ -73,7 +87,7 @@ const PlaceQuestion = ({ question }) => {
         <Typography key={t} sx={styles.question}>{t}</Typography>
       )}
       <PlaceInputField value={place} label='Your Place of Birth' onChange={handlePlaceChange} />
-      <Button disabled={!place || place.length < 3} href={`/${question.nextPath}`}>Next</Button>
+      <Button disabled={!place || place.length < 3} onClick={handlePlaceSet}>Next</Button>
     </Box>
   )
 }

@@ -33,7 +33,7 @@ const TransitionPage = ({ content }) => {
         i > 0 && <Typography key={t} sx={styles.text} >{t}</Typography>
       )}
       <Button secondaryColor onClick={() => navigate(-1)}>Back</Button>
-      <Button href={`/${content.nextPath}`}>Next</Button>
+      <Button onClick={() => navigate(`/${content.nextPath}`)}>Next</Button>
     </Box>
   )
 }
