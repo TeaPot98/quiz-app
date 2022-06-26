@@ -17,7 +17,7 @@ export const years = Array.from({length: 90}, (x, i) => 2022 - i)
 
 export const days = Array.from({length: 31}, (x, i) => i + 1)
 
-export const yourProfile = {
+export const questions = {
   'relationship-status': {
     id: '93df9b5d-1d86-4e7b-8447-e936a81ff960',
     group: 'Personal Profile',
@@ -265,5 +265,132 @@ export const yourProfile = {
       'Connecting to database...'
     ],
     nextPath: 'profile-problem'
-  }
+  },
+  'profile-problem': {
+    id: '1a2fa4dc-f6de-41f8-893c-5a750a5a81fb',
+    group: 'Personal Profile',
+    order: 10/10,
+    path: 'profile-problem',
+    type: 'quiz-simple',
+    text: [],
+    answers: [
+      {
+        id : 'd8fcca2e-4f1e-4a33-8249-849aa64524be',
+        text: 'I was unhappy with how things were going in my relationship',
+        nextPath: 'traits-started-unhappy',
+      },
+      {
+        id : '7c58d57f-64f1-4e2a-8a23-4e48d53a44a8',
+        text: 'I was unhappy with parts of my relationship, but some things were working well',
+        nextPath: 'traits-started-unhappy',
+      },
+      {
+        id : 'b3785027-01e6-4dc9-b48b-f9efd282e9ef',
+        text: 'I was generally happy in my relationship',
+        nextPath: 'traits-started-happens',
+      },
+      {
+        id : 'dcc576cd-d9a5-465b-897a-aa4e1a8e7b90',
+        text: 'I\'ve never been in a relationship',
+        nextPath: 'traits-started-compatible',
+      },
+    ],
+  },
+  'profile-problem-relationship': {
+    id: 'f3a033fa-68c5-414f-80ab-1bf11c27aabb',
+    group: 'Personal Profile',
+    order: 10/10,
+    path: 'profile-problem-relationship',
+    type: 'quiz-simple',
+    text: [],
+    answers: [
+      {
+        id : '5c6648af-ff85-4a8b-804d-d3c48acc1bf7',
+        text: 'I\'m very unhappy with how my things are going in my relationship',
+        nextPath: 'relationship-covered',
+      },
+      {
+        id : '2226c471-f767-4e61-a2b2-bc2935e60711',
+        text: 'I\'m very unhappy with parts of my relationship, but some things are working well',
+        nextPath: 'relationship-better',
+      },
+      {
+        id : 'd8a028fa-b42f-449d-b7ce-e78993c7dbb0',
+        text: 'I\'m generally happy in my relationship',
+        nextPath: 'relationship-wonder',
+      },
+    ],
+  },
+  'traits-started-unhappy': {
+    id: 'db998ef0-39bd-4fbe-8b10-3af09162da7a',
+    group: 'Personal Profile',
+    order: 10/10,
+    path: 'traits-started-unhappy',
+    type: 'transition-simple',
+    text: [
+      'To find out what works for us, we often need to understand what doesn\'t. We’ll give you insights on how to build a happy and lasting relationship with your new partner.',
+      'Now, we need some information about your Personality Traits to dig deeper!'
+    ],
+    nextPath: ''
+  },
+  'traits-started-happens': {
+    id: '1be9277a-0d1d-4e55-8ac6-0dcdbdb05c0d',
+    group: 'Personal Profile',
+    order: 10/10,
+    path: 'traits-started-happens',
+    type: 'transition-simple',
+    text: [
+      'Sometimes that happens and you need to move on! We\'ll give you insights on how to build a long lasting relationship with your next partner.',
+      'Now, we need some information about your Personality Traits to dig deeper!'
+    ],
+    nextPath: ''
+  },
+  'traits-started-compatible': {
+    id: '820dde14-afdb-4f2e-8e33-5acbe4aa3bd8',
+    group: 'Personal Profile',
+    order: 10/10,
+    path: 'traits-started-compatible',
+    type: 'transition-simple',
+    text: [
+      'Well, exciting times ahead! We\'ll give you insights about your most compatible partner.',
+      'Now, we need some information about your Personality Traits to dig deeper!'
+    ],
+    nextPath: ''
+  },
+  'relationship-covered': {
+    id: '52c4ae7d-df61-41af-bae0-70c6c38bf1e9',
+    group: 'Personal Profile',
+    order: 10/10,
+    path: 'relationship-covered',
+    type: 'transition-simple',
+    text: [
+      'We’ve got you covered! We’ll start with small, personalized insights into you and your partner’s personality traits.',
+      'Now, we need some information about Your Partner’s Profile to create the astrological synastry blueprint between you and your partner.'
+    ],
+    nextPath: ''
+  },
+  'relationship-better': {
+    id: 'a3299215-1939-4cce-9deb-40cd14c6df78',
+    group: 'Personal Profile',
+    order: 10/10,
+    path: 'relationship-better',
+    type: 'transition-simple',
+    text: [
+      'You’re probably doing better than you think! We’ll help you identify how to improve and stick with it.',
+      'Now, we need some information about Your Partner’s Profile to create the astrological synastry blueprint between you and your partner.'
+    ],
+    nextPath: ''
+  },
+  'relationship-wonder': {
+    id: 'a3ec3fc0-48d1-44b6-8842-6c873fdf1d7c',
+    group: 'Personal Profile',
+    order: 10/10,
+    path: 'relationship-wonder',
+    type: 'transition-simple',
+    text: [
+      'Wonderful! Let\'s find out what\'s working (and what isn’t) and go from there.',
+      'Now, we need some information about Your Partner’s Profile to create the astrological synastry blueprint between you and your partner.'
+    ],
+    nextPath: ''
+  },
 }

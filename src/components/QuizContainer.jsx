@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useContext } from 'react'
 
 import QuizContext from '../state/QuizContext'
@@ -9,7 +9,6 @@ import PlaceQuestion from './PlaceQuestion'
 import ConnectingToDatabase from './ConnectingToDatabase'
 
 const QuizContainer = () => {
-  const navigate = useNavigate()
   const { questionPath } = useParams()
   const questionMap = useContext(QuizContext)
   const question = questionMap[questionPath]

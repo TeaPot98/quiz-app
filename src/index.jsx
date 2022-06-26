@@ -2,9 +2,10 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
 import QuizContext from './state/QuizContext'
 import { ThemeProvider } from '@mui/material/styles'
+import { UserDataProvider } from './state/UserDataContext'
 
 import App from './App'
-import { yourProfile } from './data'
+import { questions } from './data'
 import light from './themes/light'
 
 const root = ReactDOM.createRoot(
@@ -12,9 +13,11 @@ const root = ReactDOM.createRoot(
 )
 root.render(
   <Router>
-    <QuizContext.Provider value={yourProfile}>
+    <QuizContext.Provider value={questions}>
       <ThemeProvider theme={light}>
-        <App />
+        <UserDataProvider>
+          <App />
+        </UserDataProvider>
       </ThemeProvider>
     </QuizContext.Provider>
   </Router>

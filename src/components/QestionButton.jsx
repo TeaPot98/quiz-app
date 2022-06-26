@@ -9,10 +9,10 @@ const QuestionButton = ({ children, onClick = () => {}, isSelected = false, href
       mx: 'auto',
       borderRadius: '10px',
       "&:hover": {
-        backgroundColor: isSelected ? '#066FDE' : '#EFF2FD'
+        backgroundColor: theme => isSelected ? theme.palette.button.main : theme.palette.button.secondary
       },
       "&:active": {
-        outline: isSelected && '5px solid #dee5f9'
+        outline: theme => isSelected && `5px solid ${theme.palette.button.outline}`
       },
       transition: 'background-color 0.15s ease 0s'
     }

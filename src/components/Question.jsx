@@ -6,9 +6,7 @@ import {
 } from '@mui/material'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 
-import { useNavigate, useParams } from 'react-router-dom'
-import { useContext } from 'react'
-import QuizContext from '../state/QuizContext'
+import { useNavigate } from 'react-router-dom'
 
 import ProgressBar from './ProgressBar'
 import QuestionButton from './QestionButton'
@@ -38,7 +36,7 @@ const Question = ({ question }) => {
       fontSize: '1rem',
     },
     sectionTitle: {
-      color: '#066FDE',
+      color: theme => theme.palette.primary.main,
       fontSize: '0.9rem',
       fontWeight: 'bold'
     },

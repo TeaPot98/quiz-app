@@ -20,7 +20,8 @@ const theme = createTheme({
     divider: '#dee5f9',
     button: {
       main: '#066FDE',
-      secondary: '#EFF2FD'
+      secondary: '#EFF2FD',
+      outline: '#dee5f9',
     }
   },
 })
