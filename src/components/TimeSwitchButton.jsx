@@ -5,6 +5,7 @@ import {
 const TimeSwitchButton = ({ children, isActive = false, onClick}) => {
   const styles = {
     button: {
+      height: '50px',
       borderRadius: '10px',
       backgroundColor: theme => isActive ? theme.palette.primary.main : theme.palette.button.light,
       color: isActive ? 'white' : 'black',

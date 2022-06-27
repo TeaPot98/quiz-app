@@ -19,7 +19,8 @@ const TimeQuestion = ({ question }) => {
     hour: '',
     minutes: '',
     am: false,
-    pm: false
+    pm: false,
+    valid: false
   })
   const styles = {
     container: {
@@ -29,6 +30,8 @@ const TimeQuestion = ({ question }) => {
       my: '2rem'
     },
   }
+
+  const hourIsValid = time.hour !== '' && time.minutes !== '' && (time.am || time.pm) && time.valid
 
   const handleTimeChange = (time) => {
     setTime(time)
@@ -69,7 +72,7 @@ const TimeQuestion = ({ question }) => {
         <Typography key={t} sx={styles.question}>{t}</Typography>
       )}
       <TimeInputField onChange={handleTimeChange} value={time} />
-      <Button disabled={false} onClick={handleTimeSet}>Next</Button>
+      <Button disabled={!hourIsValid} onClick={handleTimeSet}>Next</Button>
     </Box>
   )
 }
