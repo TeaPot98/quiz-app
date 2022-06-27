@@ -14,44 +14,19 @@ import SelectInputField from './SelectInputField'
 import { months, years, days } from '../data'
 import Button from './Button'
 import useUserData from '../hooks/useUserData'
+import QuestionHeader from './QuestionHeader'
 
 const DateQuestion = ({ question }) => {
   const navigate = useNavigate()
-  const {data, setAnswer} = useUserData()
-  const isSaved = data.has(question.path)
-  const [month, setMonth] = useState(isSaved ? data.get(question.path)[0].month : '')
-  const [day, setDay] = useState(isSaved ? data.get(question.path)[0].day : '')
-  const [year, setYear] = useState(isSaved ? data.get(question.path)[0].year : '')
+  const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
+  const isSaved = answers.has(question.path)
+  const [month, setMonth] = useState(isSaved ? answers.get(question.path)[0].month : '')
+  const [day, setDay] = useState(isSaved ? answers.get(question.path)[0].day : '')
+  const [year, setYear] = useState(isSaved ? answers.get(question.path)[0].year : '')
   console.log(days)
   const styles = {
     container: {
       textAlign: 'center',
-    },
-    progressBars: {
-      display: 'flex',
-      my: '1.2rem',
-      px: '1rem'
-    },
-    header: {
-      position: 'relative',
-    },
-    backButton: {
-      position: 'absolute',
-      left: 0,
-      top: -10,
-      cursor: 'default'
-    },
-    buttonIcon: {
-      fontSize: '1rem',
-    },
-    sectionTitle: {
-      color: '#066FDE',
-      fontSize: '0.9rem',
-      fontWeight: 'bold'
-    },
-    divider: {
-      height: '0.5rem',
-      borderColor: '#dee5f9'
     },
     question: {
       my: '2rem'
@@ -71,7 +46,7 @@ const DateQuestion = ({ question }) => {
   }
 
   const handleDateSet = () => {
-    setAnswer({
+    addAnswer({
       name: question.path,
       value: [{
         day: day,
@@ -79,23 +54,38 @@ const DateQuestion = ({ question }) => {
         year: year
       }]
     })
+
+    switch (question.path) {
+      case 'date-of-birth':
+        addUserData({
+          name: 'userDateOfBirth',
+          value: {
+            day: day, 
+            month: month,
+            year: year
+          }
+        })
+        break
+      case 'partner-date-of-birth':
+        addUserData({
+          name: 'partnerDateOfBirth',
+          value: {
+            day: day,
+            month: month,
+            year: year
+          }
+        })
+        break
+      default:
+        break
+    }
+    
     navigate(`/${question.nextPath}`)
   }
   
   return (
     <Box sx={styles.container}>
-      <Box sx={styles.progressBars}>
-        <ProgressBar color="#066FDE" completed={Math.abs(100)} index={1} isFirst/>
-        <ProgressBar color="#f75c03" completed={Math.abs(100)} index={2} />
-        <ProgressBar color="#04a777" completed={Math.abs(50)} index={3} />
-      </Box>
-      <Box sx={styles.header}>
-        <IconButton sx={styles.backButton} onClick={() => navigate(-1)} disableRipple>
-          <ArrowBackIosNewIcon sx={styles.buttonIcon} />
-        </IconButton>
-        <Typography sx={styles.sectionTitle}>Your Profile</Typography>
-        <Divider sx={styles.divider} />
-      </Box>
+      <QuestionHeader />
       {question.text.map(t => 
         <Typography key={t} sx={styles.question}>{t}</Typography>
       )}

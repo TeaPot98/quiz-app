@@ -6,6 +6,7 @@ import Question from './Question'
 import TransitionPage from './TransitionPage'
 import DateQuestion from './DateQuestion'
 import PlaceQuestion from './PlaceQuestion'
+import TimeQuestion from './TimeQuestion'
 import ConnectingToDatabase from './ConnectingToDatabase'
 
 const QuizContainer = () => {
@@ -26,6 +27,8 @@ const QuizContainer = () => {
         return <DateQuestion question={question} />
       case 'quiz-place': 
         return <PlaceQuestion question={question} />
+      case 'quiz-time': 
+        return <TimeQuestion question={question} />
       case 'transition-loading':
         return <ConnectingToDatabase />
       default:

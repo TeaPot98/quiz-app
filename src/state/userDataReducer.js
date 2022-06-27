@@ -20,7 +20,7 @@ const userDataReducer = (state, action) => {
       // Converting map to array and adding it to localStorage
       // localStorage.setItem('userData', JSON.stringify(Array.from(newState.entries())))
       localStorage.setItem('quizAppUserData', JSON.stringify(Array.from(newState2.userData.entries())))
-      return newState
+      return newState2
     case 'SET_ANSWERS':
       let newState3 = {...state}
       newState3.answers = payload.answers

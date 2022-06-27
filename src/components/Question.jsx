@@ -1,58 +1,52 @@
 import {
   Box,
   Typography,
-  Divider,
-  IconButton,
 } from '@mui/material'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 
 import { useNavigate } from 'react-router-dom'
 import useUserData from '../hooks/useUserData'
 
-import ProgressBar from './ProgressBar'
 import QuestionButton from './QestionButton'
+import QuestionHeader from './QuestionHeader'
 
 const Question = ({ question }) => {
   const navigate = useNavigate()
   const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
   console.log('The data from question >>>', answers)
-  // if (data.has(question.path)) {
-  //   console.log('The data first .>', data[0])
-  // }
+  console.log('User data >>> ', userData)
   
   const styles = {
     container: {
       textAlign: 'center',
     },
-    progressBars: {
-      display: 'flex',
-      my: '1.2rem',
-      px: '1rem'
-    },
-    header: {
-      position: 'relative',
-    },
-    backButton: {
-      position: 'absolute',
-      left: 0,
-      top: -10,
-      cursor: 'default'
-    },
-    buttonIcon: {
-      fontSize: '1rem',
-    },
-    sectionTitle: {
-      color: theme => theme.palette.primary.main,
-      fontSize: '0.9rem',
-      fontWeight: 500
-    },
-    divider: {
-      height: '0.5rem',
-      borderColor: '#dee5f9'
-    },
     question: {
       my: '2rem'
     },
+  }
+
+  const getAge = birthDate => Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e+10)
+
+  const userAge = getAge(`${userData.get('userDateOfBirth').year}-${userData.get('userDateOfBirth').month}-${userData.get('userDateOfBirth').day}`)
+
+  const renderQuestionText = () => {
+    switch (question.path) {
+      case 'profile-problem':
+        return (
+          <Typography sx={styles.question}>
+            {`Single ${userData.get('gender') === 'Male' ? 'men' : 'women'} ${userAge > 20 ? `in their ${userAge.toString()[0]}0s` : 'under 20s'} ${userData.get('hasChildren') ? 'who have children' : ''} need a slightly different approach to ${userData.get('goal') !== 'Both' ? userData.get('goal') === 'Find my perfect partner' ? 'find their perfect partner' : 'understand themselves better' : 'find their perfect partner and understand themselves better'}. But first, how did you feel in your last relationship?`}
+          </Typography>
+        )
+      case 'profile-problem-relationship':
+        return (
+          <Typography sx={styles.question}>
+            {`Single ${userData.get('gender') === 'Male' ? 'men' : 'women'} ${userAge > 20 ? `in their ${userAge.toString()[0]}0s` : 'under 20s'} ${userData.get('hasChildren') ? 'who have children' : ''} need a slightly different approach to ${userData.get('goal') !== 'Both' ? userData.get('goal') === 'Find my perfect partner' ? 'find their perfect partner' : 'understand themselves better' : 'find their perfect partner and understand themselves better'}. Which statement best describes you?`}
+          </Typography>
+        )
+      default:
+        return question.text.map(t => 
+          <Typography key={t} sx={styles.question}>{t}</Typography>
+        )
+    }
   }
 
   const handleAnswerSelect = (event, answer) => {
@@ -61,7 +55,6 @@ const Question = ({ question }) => {
       name: question.path, 
       value: [{id: answer.id, text: answer.text}]
     })
-
     // inRelationship, gender, age, hasChildren, goal, dateOfBirth, timeOfBirth
     switch (question.path) {
       case 'relationship-status':
@@ -70,7 +63,13 @@ const Question = ({ question }) => {
           value: answer.text === 'Single' ? false : true
         })
         break
-      case 'goal-single' || 'goal-inrelationship':
+      case 'goal-single':
+        addUserData({
+          name: 'goal',
+          value: answer.text
+        })
+        break
+      case 'goal-inrelationship':
         addUserData({
           name: 'goal',
           value: answer.text
@@ -97,21 +96,8 @@ const Question = ({ question }) => {
   
   return (
     <Box sx={styles.container}>
-      <Box sx={styles.progressBars}>
-        <ProgressBar color="#066FDE" completed={Math.abs(100)} index={1} isFirst/>
-        <ProgressBar color="#f75c03" completed={Math.abs(100)} index={2} />
-        <ProgressBar color="#04a777" completed={Math.abs(50)} index={3} />
-      </Box>
-      <Box sx={styles.header}>
-        <IconButton sx={styles.backButton} onClick={() => navigate(-1)} disableRipple>
-          <ArrowBackIosNewIcon sx={styles.buttonIcon} />
-        </IconButton>
-        <Typography sx={styles.sectionTitle}>Your Profile</Typography>
-        <Divider sx={styles.divider} />
-      </Box>
-      {question.text.map(t => 
-        <Typography key={t} sx={styles.question}>{t}</Typography>
-      )}
+      <QuestionHeader />
+      {renderQuestionText()}
       {question.answers.map(a => 
         <QuestionButton 
           key={a.id} 

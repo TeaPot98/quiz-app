@@ -23,7 +23,7 @@ const App = () => {
     if (storedUserData) {
       // Convert data from localStorage into Map and saving it to state
       setUserData({
-        userData: new Map(JSON.parse(userData))
+        userData: new Map(JSON.parse(storedUserData))
       })
     } 
     if (storedAnswers) {
