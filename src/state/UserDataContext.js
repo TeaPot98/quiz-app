@@ -6,9 +6,9 @@ export const UserDataContext = createContext(initialState)
 export const UserDataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(userDataReducer, initialState)
 
-  const setAnswer = ({name, value}) => {
+  const addAnswer = ({ name, value }) => {
     dispatch({
-      type: 'SET_ANSWER',
+      type: 'ADD_ANSWER',
       payload: {
         name,
         value
@@ -16,9 +16,37 @@ export const UserDataProvider = ({ children }) => {
     })
   }
 
+  const addUserData = ({ name, value }) => {
+    dispatch({
+      type: 'ADD_USER_DATA',
+      payload: {
+        name, 
+        value
+      }
+    })
+  }
+
+  const setAnswers = (data) => {
+    dispatch({
+      type: 'SET_ANSWERS',
+      payload: data
+    })
+  }
+
+  const setUserData = (data) => {
+    dispatch({
+      type: 'SET_USER_DATA',
+      payload: data
+    })
+  }
+
   const value = {
-    data: state,
-    setAnswer
+    userData: state.userData,
+    answers: state.answers,
+    addAnswer,
+    addUserData,
+    setAnswers,
+    setUserData
   }
 
   return <UserDataContext.Provider

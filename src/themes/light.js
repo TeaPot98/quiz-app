@@ -24,6 +24,11 @@ const theme = createTheme({
       outline: '#dee5f9',
     }
   },
+  typography: {
+    fontFamily: [
+      'system-ui, sans-serif'
+    ]
+  }
 })
 
 export default theme

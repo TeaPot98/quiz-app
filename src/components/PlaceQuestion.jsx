@@ -55,17 +55,16 @@ const PlaceQuestion = ({ question }) => {
   }
 
   const handlePlaceChange = (event) => {
+    setPlace(event.target.value)
+  }
+  
+  const handlePlaceSet = () => {
     setAnswer({
       name: question.path,
       value: [{
         place: place
       }]
     })
-    setPlace(event.target.value)
-  }
-
-  const handlePlaceSet = () => {
-
     navigate(`/${question.nextPath}`)
   }
   

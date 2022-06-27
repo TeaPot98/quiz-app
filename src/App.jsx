@@ -1,7 +1,7 @@
 import {
   Container,
 } from '@mui/material'
-
+import { useEffect } from 'react'
 import {
   Route,
   Routes,
@@ -9,12 +9,29 @@ import {
 
 import Home from './components/Home'
 import HyperPersonalized from './components/HyperPersonalized'
-import Question from './components/Question'
 import QuizContainer from './components/QuizContainer'
 import TransitionPage from './components/TransitionPage'
+import { UserDataContext } from './state/UserDataContext'
+import useUserData from './hooks/useUserData'
 
 const App = () => {
-  
+  const { userData, answers, addAnswer, addUserData, setAnswers, setUserData } = useUserData(UserDataContext)
+  useEffect(() => {
+    const storedUserData = localStorage.getItem('quizAppUserData')
+    const storedAnswers = localStorage.getItem('quizAppAnswers')
+    console.log(storedUserData)
+    if (storedUserData) {
+      // Convert data from localStorage into Map and saving it to state
+      setUserData({
+        userData: new Map(JSON.parse(userData))
+      })
+    } 
+    if (storedAnswers) {
+      setAnswers({
+        answers: new Map(JSON.parse(storedAnswers)),
+      })
+    }
+  }, [])
   
   return (
     <Container maxWidth="xs">

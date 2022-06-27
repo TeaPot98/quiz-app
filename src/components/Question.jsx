@@ -14,8 +14,8 @@ import QuestionButton from './QestionButton'
 
 const Question = ({ question }) => {
   const navigate = useNavigate()
-  const {data, setAnswer} = useUserData()
-  console.log('The data from question >>>', data)
+  const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
+  console.log('The data from question >>>', answers)
   // if (data.has(question.path)) {
   //   console.log('The data first .>', data[0])
   // }
@@ -44,7 +44,7 @@ const Question = ({ question }) => {
     sectionTitle: {
       color: theme => theme.palette.primary.main,
       fontSize: '0.9rem',
-      fontWeight: 'bold'
+      fontWeight: 500
     },
     divider: {
       height: '0.5rem',
@@ -57,10 +57,41 @@ const Question = ({ question }) => {
 
   const handleAnswerSelect = (event, answer) => {
     event.preventDefault()
-    setAnswer({
+    addAnswer({
       name: question.path, 
       value: [{id: answer.id, text: answer.text}]
     })
+
+    // inRelationship, gender, age, hasChildren, goal, dateOfBirth, timeOfBirth
+    switch (question.path) {
+      case 'relationship-status':
+        addUserData({
+          name: 'inRelationship',
+          value: answer.text === 'Single' ? false : true
+        })
+        break
+      case 'goal-single' || 'goal-inrelationship':
+        addUserData({
+          name: 'goal',
+          value: answer.text
+        })
+        break
+      case 'gender':
+        addUserData({
+          name: 'gender',
+          value: answer.text
+        })
+        break
+      case 'profile-parent': 
+        addUserData({
+          name: 'hasChildren',
+          value: answer.text === 'Yes' ? true : false
+        })
+        break
+      default:
+        break
+    }
+    
     navigate(`/${answer.nextPath}`)
   }
   
@@ -87,7 +118,7 @@ const Question = ({ question }) => {
           href={`/${a.nextPath}`}
           onClick={(event) => handleAnswerSelect(event, a)}
           isSelected={(() => {
-            if (data.has(question.path) && data.get(question.path)[0].id === a.id) {
+            if (answers.has(question.path) && answers.get(question.path)[0].id === a.id) {
               return true
             }
             return false
