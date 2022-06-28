@@ -21,7 +21,8 @@ const Question = ({ question }) => {
       mb: '2rem'
     },
     question: {
-      my: '2rem'
+      my: '2rem',
+      fontWeight: 500
     },
   }
 

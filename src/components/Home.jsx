@@ -5,8 +5,9 @@ import {
 
 import { useNavigate } from 'react-router-dom'
 
-import startImage from '../assets/start-logo.png'
+import startImage from '../assets/home.svg'
 import Button from './Button'
+import MovingArrow from './MovingArrow'
 
 const Home = () => {
   const navigate = useNavigate()
@@ -15,14 +16,17 @@ const Home = () => {
       textAlign: 'center',
     },
     image: {
-      width: '300px'
+      width: '250px'
     },
     subtitle: {
       color: 'gray',
       lineHeight: '3rem',
+      fontWeight: 500
     },
     title: {
       fontSize: '1.5rem',
+      fontWeight: 500,
+      mx: '3rem'
     },
   }
   
@@ -31,6 +35,7 @@ const Home = () => {
       <img style={styles.image} src={startImage} alt="horoscope" />
       <Typography sx={styles.subtitle}>1-Minute Personal Assessment</Typography>
       <Typography sx={styles.title}>Understand Yourself and Improve Relationships With Astrology</Typography>
+      <MovingArrow />
       <Button onClick={() => navigate('/relationship-status')} fullWidth >Take test</Button>
     </Box>
   )
