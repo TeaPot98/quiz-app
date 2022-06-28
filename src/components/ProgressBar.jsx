@@ -49,7 +49,7 @@ const ProgressBar = ({ color, completed, index, isFirst = false}) => {
     },
     icon: {
       color: 'white',
-      fontSize: '0.8rem',
+      fontSize: '0.75rem',
     }
   }
   

@@ -2,7 +2,6 @@ import { useState } from 'react'
 import {
   Box,
   TextField,
-  textFieldClasses,
 } from '@mui/material'
 import TimeSwitchButton from './TimeSwitchButton'
 
@@ -110,7 +109,7 @@ const TimeInputField = ({ value, onChange }) => {
         value={value.minutes} 
         sx={styles.timeInput}
         helperText={minuteErrorMessage}
-        error={minuteErrorMessage != ''}
+        error={minuteErrorMessage !== ''}
       />
       <TimeSwitchButton onClick={handleAMClick} isActive={value.am}>AM</TimeSwitchButton>
       <TimeSwitchButton onClick={handlePMClick} isActive={value.pm}>PM</TimeSwitchButton>

@@ -8,11 +8,13 @@ import { useNavigate } from 'react-router-dom'
 
 import logoImage from '../assets/start-logo.png'
 import LoadingBar from './LoadingBar'
+import useUserData from '../hooks/useUserData'
 
 const ConnectingToDatabase = () => {
+  const { userData } = useUserData()
   const navigate = useNavigate()
   const [completed, setCompleted] = useState(0)
-
+  const nextPath = userData.get('inRelationship') ? '/profile-problem-inrelationship' : '/profile-problem'
   useEffect(() => {
     if (completed < 100) {
       const timer = setTimeout(() => {
@@ -23,7 +25,7 @@ const ConnectingToDatabase = () => {
       return () => clearTimeout(timer)
     } else {
       const timer = setTimeout(() => {
-        navigate('/profile-problem')
+        navigate(nextPath)
       }, 200)
       return () => clearTimeout(timer)
     }

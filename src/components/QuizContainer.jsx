@@ -8,6 +8,7 @@ import DateQuestion from './DateQuestion'
 import PlaceQuestion from './PlaceQuestion'
 import TimeQuestion from './TimeQuestion'
 import ConnectingToDatabase from './ConnectingToDatabase'
+import MultipleQuestion from './MultipleQuestion'
 
 const QuizContainer = () => {
   const { questionPath } = useParams()
@@ -21,14 +22,16 @@ const QuizContainer = () => {
     switch (question.type) {
       case 'quiz-simple':
         return <Question question={question} />
-      case 'transition-simple':
-        return <TransitionPage content={question} />
+      case 'quiz-multiple':
+        return <MultipleQuestion question={question} />
       case 'quiz-date':
         return <DateQuestion question={question} />
       case 'quiz-place': 
         return <PlaceQuestion question={question} />
       case 'quiz-time': 
         return <TimeQuestion question={question} />
+      case 'transition-simple':
+        return <TransitionPage content={question} />
       case 'transition-loading':
         return <ConnectingToDatabase />
       default:

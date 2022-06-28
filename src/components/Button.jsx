@@ -1,8 +1,14 @@
+import { Typography } from '@mui/material'
 import MuiButton from '@mui/material/Button'
 
-import { Link } from 'react-router-dom'
-
-const Button = ({ children, onClick = () => {}, secondaryColor = false, fullWidth = false, href = null, disabled = false, sx }) => {
+const Button = ({ 
+  children, 
+  onClick = () => {}, 
+  secondaryColor = false, 
+  fullWidth = false, 
+  disabled = false, 
+  sx 
+}) => {
   const styles = {
     button: {
       color: secondaryColor ? 'black' : 'white',
@@ -10,7 +16,7 @@ const Button = ({ children, onClick = () => {}, secondaryColor = false, fullWidt
       fontSize: '0.9rem',
       width: fullWidth ? '100%' : '150px',
       borderRadius: '30px',
-      height: '60px',
+      minHeight: '60px',
       textTransform: 'none',
       my: '1rem',
       mx: '0.2rem',
@@ -37,7 +43,9 @@ const Button = ({ children, onClick = () => {}, secondaryColor = false, fullWidt
       disableRipple 
       disableElevation
     >
-      {children}
+      <Typography>
+        {children}
+      </Typography>
     </MuiButton>
   )
 }

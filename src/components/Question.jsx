@@ -18,6 +18,7 @@ const Question = ({ question }) => {
   const styles = {
     container: {
       textAlign: 'center',
+      mb: '2rem'
     },
     question: {
       my: '2rem'
@@ -25,9 +26,12 @@ const Question = ({ question }) => {
   }
 
   const getAge = birthDate => Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e+10)
+  let userAge
 
-  const userAge = getAge(`${userData.get('userDateOfBirth').year}-${userData.get('userDateOfBirth').month}-${userData.get('userDateOfBirth').day}`)
-
+  if (question.path === 'profile-problem' || 'profile-problem-relationship') {
+    userAge = getAge(`${userData.get('userDateOfBirth').year}-${userData.get('userDateOfBirth').month}-${userData.get('userDateOfBirth').day}`)
+  }
+  
   const renderQuestionText = () => {
     switch (question.path) {
       case 'profile-problem':
@@ -39,7 +43,7 @@ const Question = ({ question }) => {
       case 'profile-problem-relationship':
         return (
           <Typography sx={styles.question}>
-            {`Single ${userData.get('gender') === 'Male' ? 'men' : 'women'} ${userAge > 20 ? `in their ${userAge.toString()[0]}0s` : 'under 20s'} ${userData.get('hasChildren') ? 'who have children' : ''} need a slightly different approach to ${userData.get('goal') !== 'Both' ? userData.get('goal') === 'Find my perfect partner' ? 'find their perfect partner' : 'understand themselves better' : 'find their perfect partner and understand themselves better'}. Which statement best describes you?`}
+            {`${userData.get('gender') === 'Male' ? 'Men' : 'Women'} ${userAge > 20 ? `in their ${userAge.toString()[0]}0s` : 'under 20s'} ${userData.get('hasChildren') ? 'who have children' : ''} need a slightly different approach to ${userData.get('goal') !== 'Both' ? userData.get('goal') === 'Find my perfect partner' ? 'find their perfect partner' : 'understand themselves better' : 'find their perfect partner and understand themselves better'}. Which statement best describes you?`}
           </Typography>
         )
       default:

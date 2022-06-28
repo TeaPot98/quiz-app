@@ -1,7 +1,7 @@
 import {
   Container,
 } from '@mui/material'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Route,
   Routes,
@@ -14,25 +14,7 @@ import TransitionPage from './components/TransitionPage'
 import { UserDataContext } from './state/UserDataContext'
 import useUserData from './hooks/useUserData'
 
-const App = () => {
-  const { userData, answers, addAnswer, addUserData, setAnswers, setUserData } = useUserData(UserDataContext)
-  useEffect(() => {
-    const storedUserData = localStorage.getItem('quizAppUserData')
-    const storedAnswers = localStorage.getItem('quizAppAnswers')
-    console.log(storedUserData)
-    if (storedUserData) {
-      // Convert data from localStorage into Map and saving it to state
-      setUserData({
-        userData: new Map(JSON.parse(storedUserData))
-      })
-    } 
-    if (storedAnswers) {
-      setAnswers({
-        answers: new Map(JSON.parse(storedAnswers)),
-      })
-    }
-  }, [])
-  
+const App = () => {  
   return (
     <Container maxWidth="xs">
       <Routes>

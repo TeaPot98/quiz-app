@@ -1,10 +1,36 @@
-import { createContext, useReducer } from 'react'
-import userDataReducer, { initialState } from './userDataReducer'
+import { createContext, useReducer, useEffect } from 'react'
+import userDataReducer from './userDataReducer'
 
-export const UserDataContext = createContext(initialState)
+const getInitialState = () => {
+  const userData = localStorage.getItem('quizAppUserData')
+  const answers = localStorage.getItem('quizAppAnswers')
+  return {
+    userData: userData ? new Map(JSON.parse(userData)) : new Map(),
+    answers: answers ? new Map(JSON.parse(answers)) : new Map()
+  }
+}
+
+export const UserDataContext = createContext(getInitialState())
 
 export const UserDataProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(userDataReducer, initialState)
+  const [state, dispatch] = useReducer(userDataReducer, getInitialState())
+
+  // useEffect(() => {
+  //   const storedUserData = localStorage.getItem('quizAppUserData')
+  //   const storedAnswers = localStorage.getItem('quizAppAnswers')
+  //   console.log(storedUserData)
+  //   if (storedUserData) {
+  //     // Convert data from localStorage into Map and saving it to state
+  //     setUserData({
+  //       userData: new Map(JSON.parse(storedUserData))
+  //     })
+  //   } 
+  //   if (storedAnswers) {
+  //     setAnswers({
+  //       answers: new Map(JSON.parse(storedAnswers)),
+  //     })
+  //   }
+  // }, [])
 
   const addAnswer = ({ name, value }) => {
     dispatch({

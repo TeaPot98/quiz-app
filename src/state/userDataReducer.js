@@ -1,8 +1,3 @@
-export const initialState = {
-  userData: new Map(),
-  answers: new Map()
-}
-
 const userDataReducer = (state, action) => {
   const { type, payload } = action
   

@@ -5,7 +5,7 @@ const QuestionButton = ({ children, onClick = () => {}, isSelected = false }) =>
     questionButton: {
       width: '90%',
       display: 'flex',
-      my: '1rem',
+      my: '0.9rem',
       mx: 'auto',
       borderRadius: '10px',
       "&:hover": {
