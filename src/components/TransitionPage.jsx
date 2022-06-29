@@ -178,7 +178,8 @@ You can do this!</Typography>
     <Box sx={styles.container}>
       {/* <img style={styles.image} src={contentImage} alt="horoscope" />
       {renderTransitionText()} */}
-      <Comet />
+      <object type="image/svg+xml" data={Comet}>svg-animation</object>
+      {/* <Comet /> */}
       <Button secondaryColor onClick={() => navigate(-1)}>Back</Button>
       <Button onClick={() => navigate(`/${content.nextPath}`)}>Next</Button>
     </Box>
