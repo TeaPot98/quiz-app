@@ -27,8 +27,12 @@ const TimeQuestion = ({ question }) => {
       textAlign: 'center',
     },
     question: {
-      my: '2rem'
+      my: '2rem',
+      fontWeight: 500
     },
+    questionSimple: {
+      my: '2rem'
+    }
   }
 
   const hourIsValid = time.hour !== '' && time.minutes !== '' && (time.am || time.pm) && time.valid
@@ -67,9 +71,8 @@ const TimeQuestion = ({ question }) => {
   
   return (
     <Box sx={styles.container}>
-      <QuestionHeader />
-      {question.text.map(t => 
-        <Typography key={t} sx={styles.question}>{t}</Typography>
+      {question.text.map((t, i) => 
+        <Typography key={t} sx={i < 1 ? styles.question : styles.questionSimple}>{t}</Typography>
       )}
       <TimeInputField onChange={handleTimeChange} value={time} />
       <Button disabled={!hourIsValid} onClick={handleTimeSet}>Next</Button>

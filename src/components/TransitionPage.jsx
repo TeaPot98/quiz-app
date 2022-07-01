@@ -18,20 +18,24 @@ import clouds from '../assets/clouds.svg'
 import heart from '../assets/heart.svg'
 import head from '../assets/head.svg'
 import both from '../assets/both.svg'
+import relationshipImage from '../assets/relationship.png'
 import Button from './Button'
 import UserReview from './UserReview'
+import useUserData from '../hooks/useUserData'
 // import '../animations.css'
 
 const TransitionPage = ({ content }) => {
   // let contentImage = startImage
+  const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
   const navigate = useNavigate()
   const theme = useTheme()
   const styles = {
     container: {
       textAlign: 'center',
+      mt: '3rem'
     },
     image: {
-      width: '300px'
+      width: '150px'
     },
     title: {
       fontWeight: 500,
@@ -67,6 +71,7 @@ const TransitionPage = ({ content }) => {
       transitionImage = comet
       break
     case 'no-time-of-birth':
+    case 'partner-time-of-birth-false':
       transitionImage = clock
       break
     case 'traits-started-unhappy':
@@ -107,6 +112,8 @@ const TransitionPage = ({ content }) => {
     case 'patterns-both':
       transitionImage = both
       break
+    case 'strengthen-emotional-connection':
+      transitionImage = relationshipImage
     default:
       break
   }
@@ -118,7 +125,7 @@ const TransitionPage = ({ content }) => {
       case 'traits-started-compatible':
         return (
           <>
-            <Typography sx={styles.title} >{content.text[0]}</Typography>
+            <Typography sx={styles.title}>{content.text[0]}</Typography>
             <Typography sx={styles.text}>Now, we need some information about your <span style={styles.orangeText}>Personality Traits</span> to dig deeper!</Typography>
           </>
         )
@@ -134,39 +141,39 @@ const TransitionPage = ({ content }) => {
       case 'tailoring':
         return (
           <>
-            <Typography sx={styles.title}>Almost there! Now let's begin tailoring your plan by understanding your <span style={styles.greenText}>Relationship & Personality Pattern</span>.</Typography>
+            <Typography sx={styles.title}>Almost there! <br></br> Now let's begin tailoring your plan by understanding your <span style={styles.greenText}>Relationship & Personality Pattern</span>.</Typography>
             <Typography sx={styles.text} >{content.text[1]}</Typography>
           </>
         )
       case 'patterns-started':
         return (
           <>
-            <Typography sx={styles.title}>Almost there! Now let's tailor your plan by understanding the <span style={styles.greenText}>Relationship Pattern</span>.</Typography>
+            <Typography sx={styles.title}>Almost there! <br></br> Now let's tailor your plan by understanding the <span style={styles.greenText}>Relationship Pattern</span>.</Typography>
             <Typography sx={styles.text} >{content.text[1]}</Typography>
           </>
         )
       case 'traits-data-umbrella':
         return (
           <>
-            <Typography sx={styles.title}>You’re not alone. A lot of <span style={styles.blueText}>Virgo</span> people find it difficult to control emotions due to their zodiac sign traits. Don’t worry, we know how to address that!</Typography>
+            <Typography sx={styles.title}>You’re not alone. <br></br> A lot of <span style={styles.blueText}>{userData.get('userZodiacSign')}</span> people find it difficult to control emotions due to their zodiac sign traits. Don’t worry, we know how to address that!</Typography>
           </>
         )
       case 'traits-data':
         return (
           <>
-            <Typography sx={styles.title}>All right! You keep your emotions in check <span style={styles.blueText}>Virgo</span> but sometimes people might want you to show more passion. We can give you some insights about that!</Typography>
+            <Typography sx={styles.title}>All right! <br></br> You keep your emotions in check <span style={styles.blueText}>{userData.get('userZodiacSign')}</span> but sometimes people might want you to show more passion. We can give you some insights about that!</Typography>
           </>
         )
       case 'well-done':
         return (
           <>
-            <Typography sx={styles.title}>Well done! Based on our data only the top 79% of <span style={styles.blueText}>Virgo</span> find it easy to communicate with their <span style={styles.blueText}>Taurus</span> partner.</Typography>
+            <Typography sx={styles.title}>Well done! <br></br> Based on our data only the top 79% of <span style={styles.blueText}>{userData.get('userZodiacSign')}</span> find it easy to communicate with their <span style={styles.blueText}>{userData.get('partnerZodiacSign')}</span> partner.</Typography>
           </>
         )
       case 'not-alone':
         return (
           <>
-            <Typography sx={styles.title}>You’re not alone. Based on our data 79% of <span style={styles.blueText}>Virgo</span> find it difficult to communicate with their <span style={styles.blueText}>Taurus</span> partner. We can help you improve this.</Typography>
+            <Typography sx={styles.title}>You’re not alone. <br></br> Based on our data 79% of <span style={styles.blueText}>{userData.get('userZodiacSign')}</span> find it difficult to communicate with their <span style={styles.blueText}>{userData.get('partnerZodiacSign')}</span> partner. We can help you improve this.</Typography>
           </>
         )
       case 'strengthen-emotional-connection':
@@ -180,41 +187,40 @@ const TransitionPage = ({ content }) => {
       case 'patterns-zodiac-archery':
         return (
           <>
-            <Typography sx={styles.title}>You’ve come to the right place, <span style={styles.blueText}>Virgo</span>!</Typography>
+            <Typography sx={styles.title}>You’ve come to the right place, <span style={styles.blueText}>{userData.get('userZodiacSign')}</span>!</Typography>
             <Typography sx={styles.text} >{content.text[1]}</Typography>
           </>
         )
       case 'patterns-zodiac-compass':
         return (
           <>
-            <Typography sx={styles.title}><span style={styles.blueText}>Virgo</span>, here’s the thing...
-You can do this!</Typography>
+            <Typography sx={styles.title}><span style={styles.blueText}>{userData.get('userZodiacSign')}</span>, here’s the thing .. You can do this!</Typography>
             <Typography sx={styles.text} >{content.text[1]}</Typography>
           </>
         )
       case 'patterns-zodiac-clouds':
         return (
           <>
-            <Typography sx={styles.title}>It’s totally normal to feel nervous, <span style={styles.blueText}>Virgo</span>.</Typography>
+            <Typography sx={styles.title}>It’s totally normal to feel nervous, <span style={styles.blueText}>{userData.get('userZodiacSign')}</span>.</Typography>
             <Typography sx={styles.text} >{content.text[1]}</Typography>
           </>
         )
       case 'patterns-heart':
         return (
           <>
-            <Typography sx={styles.title}>Based on our data, 38% of <span style={styles.blueText}>Virgo</span> people also make decisions with their heart. But don't worry, we'll consider that while creating your guidance plan.</Typography>
+            <Typography sx={styles.title}>Based on our data, 38% of <span style={styles.blueText}>{userData.get('userZodiacSign')}</span> people also make decisions with their heart. But don't worry, we'll consider that while creating your guidance plan.</Typography>
           </>
         )
       case 'patterns-head':
         return (
           <>
-            <Typography sx={styles.title}>Based on our data, 40% of <span style={styles.blueText}>Virgo</span> people also make decisions with their head. But don't worry, we'll consider that while creating your guidance plan.</Typography>
+            <Typography sx={styles.title}>Based on our data, 40% of <span style={styles.blueText}>{userData.get('userZodiacSign')}</span> people also make decisions with their head. But don't worry, we'll consider that while creating your guidance plan.</Typography>
           </>
         )
       case 'patterns-both':
         return (
           <>
-            <Typography sx={styles.title}>Wonderful! Based on our data, only the top 22% of <span style={styles.blueText}>Virgo</span> people make decisions with their heart and head. Using both in equal measure is the key to feeling harmonious in your relationships.</Typography>
+            <Typography sx={styles.title}>Wonderful! <br></br> Based on our data, only the top 22% of <span style={styles.blueText}>{userData.get('userZodiacSign')}</span> people make decisions with their heart and head. Using both in equal measure is the key to feeling harmonious in your relationships.</Typography>
           </>
         )
       default:
@@ -231,8 +237,10 @@ You can do this!</Typography>
       
   return (
     <Box sx={styles.container}>
-      {/* <img style={styles.image} src={contentImage} alt="horoscope" /> */}
-      <object type="image/svg+xml" data={transitionImage}>svg-animation</object>
+      {content.path === 'strengthen-emotional-connection' ?
+        <img style={styles.image} src={transitionImage} alt="horoscope" /> : 
+        <object type="image/svg+xml" data={transitionImage}>svg-animation</object>
+      }
       {renderTransitionText()}
       <Button secondaryColor onClick={() => navigate(-1)}>Back</Button>
       <Button onClick={() => navigate(`/${content.nextPath}`)}>Next</Button>

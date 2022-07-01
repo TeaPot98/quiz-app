@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 
 const LoadingBar = ({ completed = 0, height = 50 }) => {
@@ -32,7 +33,7 @@ const LoadingBar = ({ completed = 0, height = 50 }) => {
   return (
     <div style={styles.container}>
       <div style={styles.filler}></div>
-      <div style={styles.text}>{Math.floor(completed)} %</div>
+      <Typography sx={styles.text}>{Math.floor(completed)} %</Typography>
     </div>
   )
 }

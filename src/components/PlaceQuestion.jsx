@@ -21,8 +21,12 @@ const PlaceQuestion = ({ question }) => {
       textAlign: 'center',
     },
     question: {
-      my: '2rem'
+      my: '2rem',
+      fontWeight: 500
     },
+    questionSimple: {
+      my: '2rem'
+    }
   }
 
   const handlePlaceChange = (event) => {
@@ -59,9 +63,8 @@ const PlaceQuestion = ({ question }) => {
   
   return (
     <Box sx={styles.container}>
-      <QuestionHeader question={question} />
-      {question.text.map(t => 
-        <Typography key={t} sx={styles.question}>{t}</Typography>
+      {question.text.map((t, i) => 
+        <Typography key={t} sx={i < 1 ? styles.question : styles.questionSimple}>{t}</Typography>
       )}
       <PlaceInputField value={place} label='Your Place of Birth' onChange={handlePlaceChange} />
       <Button disabled={!place || place.length < 3} onClick={handlePlaceSet}>Next</Button>

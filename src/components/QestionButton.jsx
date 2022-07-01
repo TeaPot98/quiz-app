@@ -14,7 +14,7 @@ const QuestionButton = ({ children, onClick = () => {}, isSelected = false }) =>
       "&:active": {
         outline: theme => isSelected && `5px solid ${theme.palette.button.outline}`
       },
-      transition: 'background-color 0.15s ease 0s'
+      transition: 'background-color 0.15s ease'
     }
   }
   

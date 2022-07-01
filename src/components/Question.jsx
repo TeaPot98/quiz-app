@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom'
 import useUserData from '../hooks/useUserData'
 
 import QuestionButton from './QestionButton'
-import QuestionHeader from './QuestionHeader'
 
 const Question = ({ question }) => {
   const navigate = useNavigate()
@@ -29,7 +28,7 @@ const Question = ({ question }) => {
   const getAge = birthDate => Math.floor((new Date() - new Date(birthDate).getTime()) / 3.15576e+10)
   let userAge
 
-  if (question.path === 'profile-problem' || 'profile-problem-relationship') {
+  if ((question.path === 'profile-problem' || 'profile-problem-relationship') && (userData.get('userDateOfBirth'))) {
     userAge = getAge(`${userData.get('userDateOfBirth').year}-${userData.get('userDateOfBirth').month}-${userData.get('userDateOfBirth').day}`)
   }
   
@@ -44,7 +43,7 @@ const Question = ({ question }) => {
       case 'profile-problem-relationship':
         return (
           <Typography sx={styles.question}>
-            {`${userData.get('gender') === 'Male' ? 'Men' : 'Women'} ${userAge > 20 ? `in their ${userAge.toString()[0]}0s` : 'under 20s'} ${userData.get('hasChildren') ? 'who have children' : ''} need a slightly different approach to ${userData.get('goal') !== 'Both' ? userData.get('goal') === 'Find my perfect partner' ? 'find their perfect partner' : 'understand themselves better' : 'find their perfect partner and understand themselves better'}. Which statement best describes you?`}
+            {`${userData.get('gender') === 'Male' ? 'Men' : 'Women'} ${userAge > 20 ? `in their ${userAge.toString()[0]}0s` : 'under 20s'} ${userData.get('hasChildren') ? 'who have children' : ''} need a slightly different approach to ${userData.get('goal') !== 'Both' ? userData.get('goal') === 'Fix relationship problems' ? 'fix their relationship problems' : 'increase relationship satisfaction' : 'fix their relationship problems and increase relationship satisfaction'}. Which statement best describes you?`}
           </Typography>
         )
       default:
@@ -96,12 +95,13 @@ const Question = ({ question }) => {
         break
     }
     
-    navigate(`/${answer.nextPath}`)
+    setTimeout(() => {
+      navigate(`/${answer.nextPath}`)
+    }, 300);
   }
   
   return (
     <Box sx={styles.container}>
-      <QuestionHeader question={question} />
       {renderQuestionText()}
       {question.answers.map(a => 
         <QuestionButton 

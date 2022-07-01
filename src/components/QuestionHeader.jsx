@@ -16,7 +16,28 @@ const QuestionHeader = ({ question }) => {
   let completionSecond = 0
   let completionThird = 0
   let textColor = theme.palette.primary.main
+  switch (question.group) {
+    case 'Personal Profile':
+      completionFirst = question.order * 100
+      textColor = theme.palette.primary.main
+      break
+    case 'Personality Traits':
+    case 'Partner Profile':
+      completionFirst = 100
+      completionSecond = question.order * 100
+      textColor = theme.palette.secondary.orange
+      break
+    default:
+      completionFirst = 100
+      completionSecond = 100
+      completionThird = question.order * 100
+      textColor = theme.palette.secondary.green
+      break
+  }
   const styles = {
+    container: {
+      textAlign: 'center'
+    },
     progressBars: {
       display: 'flex',
       my: '1.2rem',
@@ -44,28 +65,10 @@ const QuestionHeader = ({ question }) => {
       borderColor: '#dee5f9'
     },
   }
-
-  switch (question.group) {
-    case 'Personal Profile':
-      completionFirst = question.order * 100
-      textColor = theme.palette.primary.main
-      break
-    case 'Personality Traits':
-    case 'Partner Profile':
-      completionFirst = 100
-      completionSecond = question.order * 100
-      textColor = theme.palette.secondary.orange
-      break
-    default:
-      completionFirst = 100
-      completionSecond = 100
-      completionThird = question.order * 100
-      textColor = theme.palette.secondary.green
-      break
-  }
+  console.log('Question group', question.group)
 
   return (
-    <>
+    <Box sx={styles.container}>
       <Box sx={styles.progressBars}>
         <ProgressBar color={theme.palette.primary.main} completed={Math.abs(completionFirst)} index={1} isFirst/>
         <ProgressBar color={theme.palette.secondary.orange} completed={Math.abs(completionSecond)} index={2} />
@@ -78,7 +81,7 @@ const QuestionHeader = ({ question }) => {
         <Typography sx={styles.sectionTitle}>{question.group}</Typography>
         <Divider sx={styles.divider} />
       </Box>
-    </>
+    </Box>
   )
 }
 

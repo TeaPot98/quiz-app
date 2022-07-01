@@ -2,19 +2,15 @@ import { useState } from 'react'
 import {
   Box,
   Typography,
-  Divider,
-  IconButton,
 } from '@mui/material'
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 
 import { useNavigate } from 'react-router-dom'
 
-import ProgressBar from './ProgressBar'
 import SelectInputField from './SelectInputField'
 import { months, years, days } from '../data'
 import Button from './Button'
 import useUserData from '../hooks/useUserData'
-import QuestionHeader from './QuestionHeader'
+import { findZodiacSign } from '../utils'
 
 const DateQuestion = ({ question }) => {
   const navigate = useNavigate()
@@ -29,7 +25,8 @@ const DateQuestion = ({ question }) => {
       textAlign: 'center',
     },
     question: {
-      my: '2rem'
+      my: '2rem',
+      fontWeight: 500
     },
   }
 
@@ -55,6 +52,9 @@ const DateQuestion = ({ question }) => {
       }]
     })
 
+    console.log('The date of birth ', `${day}-${month}-${year}`)
+    console.log('You zodiac sign is', findZodiacSign(day, month))
+
     switch (question.path) {
       case 'date-of-birth':
         addUserData({
@@ -64,6 +64,10 @@ const DateQuestion = ({ question }) => {
             month: month,
             year: year
           }
+        })
+        addUserData({
+          name: 'userZodiacSign',
+          value: findZodiacSign(day, month)
         })
         break
       case 'partner-date-of-birth':
@@ -75,6 +79,10 @@ const DateQuestion = ({ question }) => {
             year: year
           }
         })
+        addUserData({
+          name: 'partnerZodiacSign',
+          value: findZodiacSign(day, month)
+        })
         break
       default:
         break
@@ -85,7 +93,6 @@ const DateQuestion = ({ question }) => {
   
   return (
     <Box sx={styles.container}>
-      <QuestionHeader question={question} />
       {question.text.map(t => 
         <Typography key={t} sx={styles.question}>{t}</Typography>
       )}
