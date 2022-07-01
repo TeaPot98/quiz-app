@@ -51,7 +51,7 @@ const MultipleQuestion = ({ question }) => {
   
   return (
     <Box sx={styles.container}>
-      <QuestionHeader />
+      <QuestionHeader question={question} />
       {question.text.map(t =>
         <Typography key={t} sx={styles.text}>{t}</Typography>
       )}

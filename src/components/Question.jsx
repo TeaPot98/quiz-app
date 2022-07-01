@@ -101,7 +101,7 @@ const Question = ({ question }) => {
   
   return (
     <Box sx={styles.container}>
-      <QuestionHeader />
+      <QuestionHeader question={question} />
       {renderQuestionText()}
       {question.answers.map(a => 
         <QuestionButton 

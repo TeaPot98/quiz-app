@@ -9,9 +9,13 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import { useNavigate } from 'react-router-dom'
 import ProgressBar from './ProgressBar'
 
-const QuestionHeader = () => {
+const QuestionHeader = ({ question }) => {
   const navigate = useNavigate()
   const theme = useTheme()
+  let completionFirst = 0
+  let completionSecond = 0
+  let completionThird = 0
+  let textColor = theme.palette.primary.main
   const styles = {
     progressBars: {
       display: 'flex',
@@ -31,7 +35,7 @@ const QuestionHeader = () => {
       fontSize: '1rem',
     },
     sectionTitle: {
-      color: theme => theme.palette.primary.main,
+      color: textColor,
       fontSize: '0.9rem',
       fontWeight: 500
     },
@@ -41,18 +45,37 @@ const QuestionHeader = () => {
     },
   }
 
+  switch (question.group) {
+    case 'Personal Profile':
+      completionFirst = question.order * 100
+      textColor = theme.palette.primary.main
+      break
+    case 'Personality Traits':
+    case 'Partner Profile':
+      completionFirst = 100
+      completionSecond = question.order * 100
+      textColor = theme.palette.secondary.orange
+      break
+    default:
+      completionFirst = 100
+      completionSecond = 100
+      completionThird = question.order * 100
+      textColor = theme.palette.secondary.green
+      break
+  }
+
   return (
     <>
       <Box sx={styles.progressBars}>
-        <ProgressBar color={theme.palette.primary.main} completed={Math.abs(100)} index={1} isFirst/>
-        <ProgressBar color={theme.palette.secondary.orange} completed={Math.abs(100)} index={2} />
-        <ProgressBar color={theme.palette.secondary.green} completed={Math.abs(50)} index={3} />
+        <ProgressBar color={theme.palette.primary.main} completed={Math.abs(completionFirst)} index={1} isFirst/>
+        <ProgressBar color={theme.palette.secondary.orange} completed={Math.abs(completionSecond)} index={2} />
+        <ProgressBar color={theme.palette.secondary.green} completed={Math.abs(completionThird)} index={3} />
       </Box>
       <Box sx={styles.header}>
         <IconButton sx={styles.backButton} onClick={() => navigate(-1)} disableRipple>
           <ArrowBackIosNewIcon sx={styles.buttonIcon} />
         </IconButton>
-        <Typography sx={styles.sectionTitle}>Your Profile</Typography>
+        <Typography sx={styles.sectionTitle}>{question.group}</Typography>
         <Divider sx={styles.divider} />
       </Box>
     </>

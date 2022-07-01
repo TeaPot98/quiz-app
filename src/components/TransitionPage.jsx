@@ -5,13 +5,25 @@ import {
 import { useTheme } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 
-import startImage from '../assets/start-logo.png'
-import Comet from '../assets/comet.svg'
+// import startImage from '../assets/start-logo.png'
+import comet from '../assets/comet.svg'
+import clock from '../assets/clock.svg'
+import key from '../assets/key.svg'
+import magnifyingGlass from '../assets/magnifying-glass.svg'
+import sun from '../assets/sun.svg'
+import umbrella from '../assets/umbrella.svg'
+import arrow from '../assets/arrow.svg'
+import compass from '../assets/compass.svg'
+import clouds from '../assets/clouds.svg'
+import heart from '../assets/heart.svg'
+import head from '../assets/head.svg'
+import both from '../assets/both.svg'
 import Button from './Button'
 import UserReview from './UserReview'
+// import '../animations.css'
 
 const TransitionPage = ({ content }) => {
-  let contentImage = startImage
+  // let contentImage = startImage
   const navigate = useNavigate()
   const theme = useTheme()
   const styles = {
@@ -23,10 +35,12 @@ const TransitionPage = ({ content }) => {
     },
     title: {
       fontWeight: 500,
-      my: '0.5rem'
+      my: '0.5rem',
+      mx: '3rem'
     },
     text: {
-      my: '0.5rem'
+      my: '0.5rem',
+      mx: '3rem'
     },
     smallText: {
       fontSize: '0.75rem',
@@ -46,14 +60,55 @@ const TransitionPage = ({ content }) => {
       fontWeight: 500,
     }
   }
+  let transitionImage = comet
 
   switch (content.path) {
     case 'profile-goal-setup':
-      
-      break;
-  
+      transitionImage = comet
+      break
+    case 'no-time-of-birth':
+      transitionImage = clock
+      break
+    case 'traits-started-unhappy':
+    case 'traits-started-happens':
+    case 'traits-started-compatible':
+    case 'relationship-covered':
+    case 'relationship-better':
+    case 'relationship-wonder':
+      transitionImage = key
+      break
+    case 'tailoring':
+    case 'patterns-started':
+      transitionImage = magnifyingGlass
+      break
+    case 'traits-data':
+    case 'well-done':
+      transitionImage = sun
+      break
+    case 'traits-data-umbrella':
+    case 'not-alone':
+      transitionImage = umbrella
+      break
+    case 'patterns-zodiac-archery':
+      transitionImage = arrow
+      break
+    case 'patterns-zodiac-compass':
+      transitionImage = compass
+      break
+    case 'patterns-zodiac-clouds':
+      transitionImage = clouds
+      break
+    case 'patterns-heart':
+      transitionImage = heart
+      break
+    case 'patterns-head':
+      transitionImage = head
+      break
+    case 'patterns-both':
+      transitionImage = both
+      break
     default:
-      break;
+      break
   }
 
   const renderTransitionText = () => {
@@ -173,13 +228,12 @@ You can do this!</Typography>
         )
     }
   }
-
+      
   return (
     <Box sx={styles.container}>
-      {/* <img style={styles.image} src={contentImage} alt="horoscope" />
-      {renderTransitionText()} */}
-      <object type="image/svg+xml" data={Comet}>svg-animation</object>
-      {/* <Comet /> */}
+      {/* <img style={styles.image} src={contentImage} alt="horoscope" /> */}
+      <object type="image/svg+xml" data={transitionImage}>svg-animation</object>
+      {renderTransitionText()}
       <Button secondaryColor onClick={() => navigate(-1)}>Back</Button>
       <Button onClick={() => navigate(`/${content.nextPath}`)}>Next</Button>
     </Box>

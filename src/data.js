@@ -269,7 +269,7 @@ export const questions = {
   'profile-problem': {
     id: '1a2fa4dc-f6de-41f8-893c-5a750a5a81fb',
     group: 'Personal Profile',
-    order: 10/10,
+    order: 10/10.1,
     path: 'profile-problem',
     type: 'quiz-simple',
     text: [],
@@ -299,7 +299,7 @@ export const questions = {
   'profile-problem-relationship': {
     id: 'f3a033fa-68c5-414f-80ab-1bf11c27aabb',
     group: 'Personal Profile',
-    order: 10/10,
+    order: 10/10.1,
     path: 'profile-problem-relationship',
     type: 'quiz-simple',
     text: [],
@@ -454,7 +454,7 @@ export const questions = {
   'partner-place-of-birth': {
     id: '3fa1ffe0-89bd-4841-9bcb-5a106ca4abd4',
     group: 'Partner Profile',
-    order: 4/4,
+    order: 4/4.1,
     path: 'partner-place-of-birth',
     type: 'quiz-place',
     text: [
@@ -746,7 +746,7 @@ export const questions = {
   'traits-relaxing': {
     id: 'b69644e0-4b13-44b7-8025-1d1bd57ad675',
     group: 'Personality Traits',
-    order: 9/9,
+    order: 9/9.1,
     path: 'traits-relaxing',
     type: 'quiz-simple',
     text: [
@@ -1230,7 +1230,7 @@ export const questions = {
   'patterns-question-head-or-heart': {
     id: '88fe9d9c-8a49-43ac-bec5-cc57b0450bf9',
     group: 'Relationship & Personality Pattern',
-    order: 12/12,
+    order: 12/12.1,
     path: 'patterns-question-head-or-heart',
     type: 'quiz-simple',
     text: [

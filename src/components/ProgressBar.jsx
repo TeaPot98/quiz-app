@@ -36,7 +36,7 @@ const ProgressBar = ({ color, completed, index, isFirst = false}) => {
       transition: 'background-color 0.15s ease-in-out'
     },
     startCircle: {
-      backgroundColor: completed !== 100 ? '#e5eafa' : color,
+      backgroundColor: color,
       width: 16,
       height: 16,
       borderRadius: 10,

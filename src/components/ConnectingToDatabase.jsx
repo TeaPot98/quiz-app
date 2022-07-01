@@ -6,7 +6,7 @@ import {
 } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 
-import logoImage from '../assets/start-logo.png'
+import spinner from '../assets/spinner.svg'
 import LoadingBar from './LoadingBar'
 import useUserData from '../hooks/useUserData'
 
@@ -14,7 +14,7 @@ const ConnectingToDatabase = () => {
   const { userData } = useUserData()
   const navigate = useNavigate()
   const [completed, setCompleted] = useState(0)
-  const nextPath = userData.get('inRelationship') ? '/profile-problem-inrelationship' : '/profile-problem'
+  const nextPath = userData.get('inRelationship') ? '/profile-problem-relationship' : '/profile-problem'
   useEffect(() => {
     if (completed < 100) {
       const timer = setTimeout(() => {
@@ -42,7 +42,7 @@ const ConnectingToDatabase = () => {
       textAlign: 'center'
     },
     text: {
-      fontWeight: 'bold'
+      fontWeight: 500
     },
     image: {
       width: '300px'
@@ -55,7 +55,7 @@ const ConnectingToDatabase = () => {
   return (
     <Box sx={styles.container}>
       <Typography sx={styles.text}>We've helped 4,453,504 other women with their Sun in Virgo to understand themselves better and we can't wait to help you too!</Typography>
-      <img style={styles.image} src={logoImage} alt="logo" />
+      <object type="image/svg+xml" data={spinner}>svg-animation</object>
       <Typography sx={styles.loadingBarText}>Connecting to database...</Typography>
       <LoadingBar completed={completed} />
     </Box>

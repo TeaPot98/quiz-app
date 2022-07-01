@@ -36,6 +36,7 @@ const Button = ({
   return (
     <MuiButton 
       sx={styles.button} 
+      className="my-button"
       variant="contained" 
       onClick={onClick}
       disabled={disabled}
