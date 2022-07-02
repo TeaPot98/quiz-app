@@ -13,6 +13,7 @@ import QuizContainer from './components/QuizContainer'
 import TransitionPage from './components/TransitionPage'
 import { UserDataContext } from './state/UserDataContext'
 import useUserData from './hooks/useUserData'
+import Loading from './components/Loading'
 
 const App = () => {  
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/transition" element={<TransitionPage />} />
         <Route path="/profile-hyperpersonalized" element={<HyperPersonalized />} />
+        <Route path="/loading" element={<Loading />} />
         <Route path="/:questionPath" element={<QuizContainer />} />
       </Routes>
     </Container>
