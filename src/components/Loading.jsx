@@ -129,27 +129,37 @@ const Loading = () => {
       height: '30px'
     },
     checkContainer: {
+      height: '20px',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       gap: '0.7rem'
     },
     blueCheckIcon: {
+      maxWidth: '18px',
       display: completed.blue === 100 ? 'block' : 'none',
     },
     blueCircle: {
+      maxWidth: '9px',
+      marginLeft: '6px',
       display: completed.blue === 100 ? 'none' : 'default'
     },
     orangeCheckIcon: {
+      maxWidth: '18px',
       display: completed.orange === 100 ? 'block' : 'none',
     },
     orangeCircle: {
+      maxWidth: '9px',
+      marginLeft: '6px',
       display: completed.orange === 100 ? 'none' : 'default'
     },
     greenCheckIcon: {
+      maxWidth: '18px',
       display: completed.green === 100 ? 'block' : 'none',
     },
     greenCircle: {
+      maxWidth: '9px',
+      marginLeft: '6px',
       display: completed.green === 100 ? 'none' : 'default'
     },
     smallText: {
