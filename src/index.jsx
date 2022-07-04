@@ -1,3 +1,4 @@
+import './global.css'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router } from 'react-router-dom'
 import QuizContext from './state/QuizContext'

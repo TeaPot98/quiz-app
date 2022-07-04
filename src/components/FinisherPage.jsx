@@ -3,8 +3,10 @@ import {
   Box, 
   Typography,
 } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
 const FinisherPage = () => {
+  const navigate = useNavigate()
   const textArray = [
     'Welcome',
     'Based on your answers,',
@@ -55,6 +57,8 @@ const FinisherPage = () => {
     const removeOpacity = setTimeout(() => {
       if (textIndex < textArray.length - 1) {
         setOpacity(0)
+      } else {
+        navigate('/trial-pay')
       }
     }, 3000)
     return () => {
