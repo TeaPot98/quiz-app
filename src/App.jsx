@@ -1,7 +1,6 @@
 import {
   Container,
 } from '@mui/material'
-import { useEffect, useState } from 'react'
 import {
   Route,
   Routes,
@@ -11,9 +10,9 @@ import Home from './components/Home'
 import HyperPersonalized from './components/HyperPersonalized'
 import QuizContainer from './components/QuizContainer'
 import TransitionPage from './components/TransitionPage'
-import { UserDataContext } from './state/UserDataContext'
-import useUserData from './hooks/useUserData'
 import Loading from './components/Loading'
+import EmailPage from './components/EmailPage'
+import FinisherPage from './components/FinisherPage'
 
 const App = () => {  
   return (
@@ -23,6 +22,8 @@ const App = () => {
         <Route path="/transition" element={<TransitionPage />} />
         <Route path="/profile-hyperpersonalized" element={<HyperPersonalized />} />
         <Route path="/loading" element={<Loading />} />
+        <Route path="/email" element={<EmailPage />} />
+        <Route path="/finisher" element={<FinisherPage />} />
         <Route path="/:questionPath" element={<QuizContainer />} />
       </Routes>
     </Container>

@@ -13,7 +13,12 @@ const Home = () => {
   const navigate = useNavigate()
   const styles = {
     container: {
+      height: '90vh',
+      display: 'flex',
+      flexDirection: 'column',
       textAlign: 'center',
+      alignItems: 'center',
+      justifyContent: 'center'
     },
     image: {
       width: '250px'

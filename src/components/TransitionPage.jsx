@@ -32,7 +32,7 @@ const TransitionPage = ({ content }) => {
   const styles = {
     container: {
       textAlign: 'center',
-      mt: '3rem'
+      mt: '3rem',
     },
     image: {
       width: '150px'

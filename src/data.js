@@ -1752,4 +1752,15 @@ export const questions = {
       },
     ]
   },
+  'email': {
+    id: 'a20d57b5-920a-4bc7-a940-7b2672085d59',
+    group: 'Final',
+    order: 1/2,
+    path: 'email',
+    type: 'quiz-email',
+    text: [
+      'Enter your email to see how you can improve your relationship'
+    ],
+    nextPath: 'finisher'
+  }
 }

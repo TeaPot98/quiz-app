@@ -10,6 +10,7 @@ const MovingArrow = () => {
   const styles = {
     container: {
       height: '70px',
+      minHeight: '70px',
     },
     arrowIcon: {
       transform: 'rotate(90deg)',

@@ -70,7 +70,7 @@ const Loading = () => {
     } else {
       const timer = setTimeout(() => {
         console.log('Done !')
-        // navigate(nextPath)
+        navigate(nextPath)
       }, 200)
       return () => clearTimeout(timer)
     }
@@ -113,6 +113,7 @@ const Loading = () => {
 
   const styles = {
     container: {
+      height: '90vh',
       textAlign: 'center',
       display: 'flex',
       flexDirection: 'column',
