@@ -21,7 +21,7 @@ import diners from '../../assets/diners.svg'
 import discover from '../../assets/discover.svg'
 import Button from '../buttons/Button'
 
-const CreditCardModal = ({ open, onClose }) => {
+const CreditCardModal = ({ nextPath, open, onClose }) => {
   const navigate = useNavigate()
   const [name, setName] = useState('')
   const [cardNumber, setCardNumber] = useState('')
@@ -215,7 +215,7 @@ const CreditCardModal = ({ open, onClose }) => {
   }
 
   const handleClick = () => {
-    navigate('/thank-you')
+    navigate(nextPath)
   }
   
   return (

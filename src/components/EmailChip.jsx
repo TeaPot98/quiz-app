@@ -31,7 +31,8 @@ const EmailChip = ({ email }) => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      fontSize: '1rem'
+      fontSize: '1rem',
+      
     },
   }
 

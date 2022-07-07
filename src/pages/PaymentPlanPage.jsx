@@ -10,6 +10,7 @@ import useUserData from '../hooks/useUserData'
 import Button from '../components/buttons/Button'
 import EmailChip from '../components/EmailChip'
 import PricePicker from '../components/buttons/PricePicker'
+import EmailHeader from '../components/EmailHeader'
 
 const PaymentPlanPage = () => {
   const navigate = useNavigate()
@@ -51,7 +52,7 @@ const PaymentPlanPage = () => {
         value: price
       }
     })
-    navigate('/subscribe')
+    navigate('/payment')
   }
 
   const selectPrice = (p) => {
@@ -60,9 +61,7 @@ const PaymentPlanPage = () => {
   
   return (
     <Box sx={styles.container}>
-      <Box sx={styles.header}>
-        <EmailChip email={userData.get('email') ? userData.get('email') : 'no email'} />
-      </Box>
+      <EmailHeader />
       <Typography>We've helped millions of people to have happier lives and better relationships, and we want to help you too.</Typography>
       <Typography sx={styles.boldText}>Money shouldn’t stand in the way of finding astrology guidance that finally works. So, choose an amount that you think is reasonable to try us out for one week.</Typography>
       <Typography sx={styles.blueText}>It costs us $13.21 to compensate our Hint employees for the trial, but please choose the amount you are comfortable with.</Typography>

@@ -122,7 +122,7 @@ const PaymentPage = () => {
             <CreditCardIcon /><span>Credit / Debit Card</span>
           </Box>
         </Button>
-        <CreditCardModal open={open} onClose={closeCreditCardModal} />
+        <CreditCardModal nextPath="/trial-skip" open={open} onClose={closeCreditCardModal} />
       </Box>
     </Box>
   )
