@@ -15,19 +15,17 @@ const AccessPage = () => {
   const pixelId = localStorage.getItem('fbPixelId')
   console.log('The pixel ID from the final page >>> ', pixelId)
   console.log(userData)
-  ReactPixel.init('254180783380192')
+  // ReactPixel.init('254180783380192')
+  ReactPixel.init(pixelId)
   ReactPixel.track('Purchase', {
-    value: 115.00,
+    value: userData.get('totalPrice').value,
     currency: 'USD',
+    user: userData.get('email'),
     contents: [
-      {
-        id: '301',
-        quantity: 1
-      },
-      {
-        id: '401',
-        quantity: 2
-      }],
+      userData.get('trialPrice'),
+      userData.get('perWeekPrice'),
+      userData.get('addonsPrice')
+    ],
     content_type: 'product'
   })
   const styles = {
