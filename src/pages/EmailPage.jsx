@@ -4,10 +4,10 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
-import Button from './Button'
 
 import { useNavigate } from 'react-router-dom'
 import useUserData from '../hooks/useUserData'
+import Button from '../components/buttons/Button'
 
 const EmailPage = () => {
   const navigate = useNavigate()

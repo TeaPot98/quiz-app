@@ -6,8 +6,8 @@ import {
 import { useNavigate } from 'react-router-dom'
 
 import startImage from '../assets/home.svg'
-import Button from './Button'
-import MovingArrow from './MovingArrow'
+import Button from '../components/buttons/Button'
+import MovingArrow from '../components/MovingArrow'
 
 const Home = () => {
   const navigate = useNavigate()

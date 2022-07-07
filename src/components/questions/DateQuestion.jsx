@@ -6,11 +6,11 @@ import {
 
 import { useNavigate } from 'react-router-dom'
 
-import SelectInputField from './SelectInputField'
-import { months, years, days } from '../data'
-import Button from './Button'
-import useUserData from '../hooks/useUserData'
-import { findZodiacSign } from '../utils'
+import SelectInputField from '../SelectInputField'
+import { months, years, days } from '../../data'
+import Button from '../buttons/Button'
+import useUserData from '../../hooks/useUserData'
+import { findZodiacSign } from '../../utils'
 
 const DateQuestion = ({ question }) => {
   const navigate = useNavigate()

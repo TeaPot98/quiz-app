@@ -6,16 +6,22 @@ import {
 
 import { useNavigate } from 'react-router-dom'
 
-import PlaceInputField from './SearchInputField'
-import Button from './Button'
-import useUserData from '../hooks/useUserData'
-import QuestionHeader from './QuestionHeader'
+import Button from '../buttons/Button'
+import useUserData from '../../hooks/useUserData'
+import QuestionHeader from '../QuestionHeader'
+import TimeInputField from '../TimeInputField'
 
-const PlaceQuestion = ({ question }) => {
+const TimeQuestion = ({ question }) => {
   const navigate = useNavigate()
   const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
   const isSaved = answers.has(question.path)
-  const [place, setPlace] = useState(isSaved ? answers.get(question.path)[0].place : '')
+  const [time, setTime] = useState(isSaved ? answers.get(question.path)[0].time : {
+    hour: '',
+    minutes: '',
+    am: false,
+    pm: false,
+    valid: false
+  })
   const styles = {
     container: {
       textAlign: 'center',
@@ -29,29 +35,31 @@ const PlaceQuestion = ({ question }) => {
     }
   }
 
-  const handlePlaceChange = (event) => {
-    setPlace(event.target.value)
+  const hourIsValid = time.hour !== '' && time.minutes !== '' && (time.am || time.pm) && time.valid
+
+  const handleTimeChange = (time) => {
+    setTime(time)
   }
   
-  const handlePlaceSet = () => {
+  const handleTimeSet = () => {
     addAnswer({
       name: question.path,
       value: [{
-        place: place
+        time: time
       }]
     })
 
     switch (question.path) {
-      case 'place-of-birth':
+      case 'time-of-birth':
         addUserData({
-          name: 'userPlaceOfBirth',
-          value: place
+          name: 'userTimeOfBirth',
+          value: time
         })
         break
-      case 'partner-place-of-birth':
+      case 'partner-time-of-birth-true':
         addUserData({
-          name: 'partnerPlaceOfBirth',
-          value: place
+          name: 'partnerTimeOfBirth',
+          value: time
         })
       break
       default:
@@ -66,10 +74,10 @@ const PlaceQuestion = ({ question }) => {
       {question.text.map((t, i) => 
         <Typography key={t} sx={i < 1 ? styles.question : styles.questionSimple}>{t}</Typography>
       )}
-      <PlaceInputField value={place} label={question.path === 'partner-place-of-birth' ? 'Your Partner\'s Place of Birth' : 'Your Place of Birth'} onChange={handlePlaceChange} />
-      <Button disabled={!place || place.length < 3} onClick={handlePlaceSet}>Next</Button>
+      <TimeInputField onChange={handleTimeChange} value={time} />
+      <Button disabled={!hourIsValid} onClick={handleTimeSet}>Next</Button>
     </Box>
   )
 }
 
-export default PlaceQuestion
+export default TimeQuestion

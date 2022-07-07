@@ -4,9 +4,9 @@ import {
 } from '@mui/material'
 
 import { useNavigate } from 'react-router-dom'
-import useUserData from '../hooks/useUserData'
+import useUserData from '../../hooks/useUserData'
 
-import QuestionButton from './QestionButton'
+import QuestionButton from '../buttons/QestionButton'
 
 const Question = ({ question }) => {
   const navigate = useNavigate()

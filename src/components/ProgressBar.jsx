@@ -31,6 +31,9 @@ const ProgressBar = ({ color, completed, index, isFirst = false}) => {
       height: 16,
       borderRadius: 10,
       position: 'absolute',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       right: 0,
       top: -5,
       transition: 'background-color 0.15s ease-in-out'
@@ -50,6 +53,7 @@ const ProgressBar = ({ color, completed, index, isFirst = false}) => {
     icon: {
       color: 'white',
       fontSize: '0.75rem',
+      
     }
   }
   

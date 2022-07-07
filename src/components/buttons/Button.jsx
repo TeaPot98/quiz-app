@@ -44,7 +44,7 @@ const Button = ({
       disableRipple 
       disableElevation
     >
-      <Typography>
+      <Typography component="div">
         {children}
       </Typography>
     </MuiButton>

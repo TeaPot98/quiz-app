@@ -5,7 +5,7 @@ import {
   Box,
   Typography
 } from '@mui/material'
-import EmailModal from './EmailModal'
+import EmailModal from './modals/EmailModal'
 
 const EmailChip = ({ email }) => {
   const theme = useTheme()

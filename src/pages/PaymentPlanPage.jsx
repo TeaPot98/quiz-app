@@ -7,11 +7,11 @@ import {
 import { useNavigate } from 'react-router-dom'
 import useUserData from '../hooks/useUserData'
 
-import Button from './Button'
-import EmailChip from './EmailChip'
-import PricePicker from './PricePicker'
+import Button from '../components/buttons/Button'
+import EmailChip from '../components/EmailChip'
+import PricePicker from '../components/buttons/PricePicker'
 
-const PaymentPage = () => {
+const PaymentPlanPage = () => {
   const navigate = useNavigate()
   const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
   const [price, setPrice] = useState(userData.get('pricePlan') ? userData.get('pricePlan').value : null)
@@ -51,6 +51,7 @@ const PaymentPage = () => {
         value: price
       }
     })
+    navigate('/subscribe')
   }
 
   const selectPrice = (p) => {
@@ -71,4 +72,4 @@ const PaymentPage = () => {
   )
 }
 
-export default PaymentPage
+export default PaymentPlanPage

@@ -3,13 +3,12 @@ import {
   Box,
   Typography,
 } from '@mui/material'
-import Button from './Button'
 
 import { useNavigate } from 'react-router-dom'
-import useUserData from '../hooks/useUserData'
+import useUserData from '../../hooks/useUserData'
 
-import QuestionHeader from './QuestionHeader'
-import CheckboxButton from './ChekboxButton'
+import Button from '../buttons/Button'
+import CheckboxButton from '../buttons/ChekboxButton'
 
 const MultipleQuestion = ({ question }) => {
   const navigate = useNavigate()

@@ -5,7 +5,7 @@ import {
 import { useTheme } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logo.svg'
-import Button from './Button'
+import Button from '../components/buttons/Button'
 
 const HyperPersonalized = () => {
   const theme = useTheme()

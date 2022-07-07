@@ -11,7 +11,7 @@ import checkOrange from '../assets/check-orange.svg'
 import checkGreen from '../assets/check-green.svg'
 import checkBlue from '../assets/check-blue.svg'
 import circle from '../assets/circle.svg'
-import LoadingBar from './LoadingBar'
+import LoadingBar from '../components/LoadingBar'
 import useUserData from '../hooks/useUserData'
 import { useNavigate } from 'react-router-dom'
 

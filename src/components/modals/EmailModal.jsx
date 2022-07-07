@@ -7,8 +7,8 @@ import {
 } from '@mui/material'
 
 import { useNavigate } from 'react-router-dom'
-import useUserData from '../hooks/useUserData'
-import Button from './Button'
+import useUserData from '../../hooks/useUserData'
+import Button from '../buttons/Button'
 
 const EmailModal = ({ open, onClose }) => {
   const navigate = useNavigate()

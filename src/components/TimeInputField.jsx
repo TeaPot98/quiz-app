@@ -3,7 +3,7 @@ import {
   Box,
   TextField,
 } from '@mui/material'
-import TimeSwitchButton from './TimeSwitchButton'
+import TimeSwitchButton from './buttons/TimeSwitchButton'
 
 const TimeInputField = ({ value, onChange }) => {
   const [hourErrorMessage, setHourErrorMessage] = useState('')

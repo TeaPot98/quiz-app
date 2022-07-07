@@ -2,14 +2,14 @@ import { useParams } from 'react-router-dom'
 import { useContext } from 'react'
 
 import QuizContext from '../state/QuizContext'
-import Question from './Question'
+import Question from '../components/questions/Question'
 import TransitionPage from './TransitionPage'
-import DateQuestion from './DateQuestion'
-import PlaceQuestion from './PlaceQuestion'
-import TimeQuestion from './TimeQuestion'
+import DateQuestion from '../components/questions/DateQuestion'
+import PlaceQuestion from '../components/questions/PlaceQuestion'
+import TimeQuestion from '../components/questions/TimeQuestion'
 import ConnectingToDatabase from './ConnectingToDatabase'
-import MultipleQuestion from './MultipleQuestion'
-import QuestionHeader from './QuestionHeader'
+import MultipleQuestion from '../components/questions/MultipleQuestion'
+import QuestionHeader from '../components/QuestionHeader'
 
 const QuizContainer = () => {
   const { questionPath } = useParams()

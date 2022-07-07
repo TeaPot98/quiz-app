@@ -25,7 +25,7 @@ const LoadingBar = ({ completed = 0, height = 50, label = '', color, backgroundC
       height: 'inherit',
       backgroundColor: color ? color : theme.palette.primary.main,
       borderRadius: 'inherit',
-      transition: isSlim ? 'width 0.15s ease-in-out' : 'width 0.01s ease-in-out'
+      transition: 'width 0.15s ease-in-out'
     },
     labelContainer: {
       display: 'flex',

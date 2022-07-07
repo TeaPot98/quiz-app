@@ -7,7 +7,7 @@ import { useTheme } from '@mui/material/styles'
 import { useNavigate } from 'react-router-dom'
 
 import spinner from '../assets/spinner.svg'
-import LoadingBar from './LoadingBar'
+import LoadingBar from '../components/LoadingBar'
 import useUserData from '../hooks/useUserData'
 
 const ConnectingToDatabase = () => {
