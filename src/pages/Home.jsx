@@ -3,7 +3,7 @@ import {
   Box,
 } from '@mui/material'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import startImage from '../assets/home.svg'
 import Button from '../components/buttons/Button'
@@ -11,6 +11,9 @@ import MovingArrow from '../components/MovingArrow'
 
 const Home = () => {
   const navigate = useNavigate()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const pixelId = searchParams.get('pixelid')
+  localStorage.setItem('fbPixelId', pixelId)
   const styles = {
     container: {
       height: '90vh',

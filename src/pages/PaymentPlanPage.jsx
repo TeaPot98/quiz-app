@@ -15,7 +15,8 @@ import EmailHeader from '../components/EmailHeader'
 const PaymentPlanPage = () => {
   const navigate = useNavigate()
   const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
-  const [price, setPrice] = useState(userData.get('pricePlan') ? userData.get('pricePlan').value : null)
+  const [price, setPrice] = useState(userData.get('trialPrice') ? userData.get('trialPrice').value : null)
+  console.log(userData)
   const styles = {
     container: {
       display: 'flex',
@@ -45,8 +46,9 @@ const PaymentPlanPage = () => {
 
   const handlePlanClick = () => {
     addUserData({
-      name: 'pricePlan',
+      name: 'trialPrice',
       value: {
+        name: 'Trial Plan price',
         price: `$${price}`,
         currency: 'USD',
         value: price

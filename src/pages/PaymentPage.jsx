@@ -11,9 +11,12 @@ import CreditCardIcon from '@mui/icons-material/CreditCard'
 import logo from '../assets/logo.svg'
 import Button from '../components/buttons/Button'
 import CreditCardModal from '../components/modals/CreditCardModal'
+import useUserData from '../hooks/useUserData'
 
 const PaymentPage = () => {
   const theme = useTheme()
+  const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
+  console.log(userData)
   const [open, setOpen] = useState(false)
   const styles = {
     container: {
@@ -100,13 +103,13 @@ const PaymentPage = () => {
         <Divider sx={styles.grayDivider} />
         <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
           <Typography sx={{ ...styles.text, ...styles.textBold }}>Total today</Typography>
-          <Typography sx={{ ...styles.textBold, ...styles.textBlue, ...styles.text }}>$5</Typography>
+          <Typography sx={{ ...styles.textBold, ...styles.textBlue, ...styles.text }}>${userData.get('trialPrice').value}</Typography>
         </Box>
         <Divider sx={styles.grayDivider} />
         <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%', alignItems: 'center' }}>
           <Box>
             <Typography sx={{ ...styles.text, ...styles.textBold, ...styles.textGreen }}>Code applied!</Typography>
-            <Typography sx={styles.text}>Your cost perweek after trial</Typography>
+            <Typography sx={styles.text}>Your cost per week after trial</Typography>
             <Typography sx={{ ...styles.text, ...styles.textGray }}>Save $10 every week</Typography>
           </Box>
           <Typography sx={{ ...styles.text, textDecoration: 'line-through', ...styles.textGray }}>$29</Typography>
@@ -114,7 +117,7 @@ const PaymentPage = () => {
         </Box>
         <Divider sx={styles.grayDivider} />
         <Box sx={{ alignSelf: 'start' }}>
-          <Typography sx={styles.smallText}>You will be charged only <span style={styles.textBold}>5$ for your 7-day trial.</span></Typography>
+          <Typography sx={styles.smallText}>You will be charged only <span style={styles.textBold}>{userData.get('trialPrice').value}$ for your 7-day trial.</span></Typography>
           <Typography sx={styles.smallText}>We'll <span style={styles.textBold}>email you a reminder</span> before your trial period ends. Cancel anytime.</Typography>
         </Box>
         <Button onClick={openCreditCardModal} sx={styles.button} fullWidth>

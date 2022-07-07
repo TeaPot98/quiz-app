@@ -7,13 +7,17 @@ import {
 } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import CreditCardIcon from '@mui/icons-material/CreditCard'
+import { useNavigate } from 'react-router-dom'
 
 import logo from '../assets/logo.svg'
 import Button from '../components/buttons/Button'
 import CreditCardModal from '../components/modals/CreditCardModal'
 import TrialSkipOffer from '../components/TrialSkipOffer'
+import useUserData from '../hooks/useUserData'
 
 const TrialSkipPage = () => {
+  const navigate = useNavigate()
+  const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
   const theme = useTheme()
   const styles = {
     container: {
@@ -54,6 +58,41 @@ const TrialSkipPage = () => {
       alignItems: 'end'
     }
   }
+
+  const skipTrial = () => {
+    addUserData({
+      name: 'trialPrice',
+      value: {
+        name: 'Trial Plan price',
+        price: `$0`,
+        currency: 'USD',
+        value: 0
+      }
+    })
+    addUserData({
+      name: 'perWeekPrice',
+      value: {
+        name: 'Per Week price',
+        price: '$12.73',
+        currency: 'USD',
+        value: 12.73
+      }
+    })
+    navigate('/premiumbundle-success')
+  }
+
+  const startTrial = () => {
+    addUserData({
+      name: 'perWeekPrice',
+      value: {
+        name: 'Per Week price',
+        price: '$19',
+        currency: 'USD',
+        value: 19
+      }
+    })
+    navigate('/premiumbundle-success')
+  }
   
   return (
     <Box sx={styles.container}>
@@ -67,6 +106,7 @@ const TrialSkipPage = () => {
             price="$19"
             totalSavings="$0"
             buttonContent="Start trial"
+            onClick={startTrial}
             trial
           />
           <TrialSkipOffer 
@@ -74,6 +114,7 @@ const TrialSkipPage = () => {
             totalSavings="$6.27"
             buttonContent="Pay now and skip trial"
             savingPercent={30}
+            onClick={skipTrial}
           />
         </Box>
       </Box>

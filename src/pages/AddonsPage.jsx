@@ -8,12 +8,15 @@ import LockIcon from '@mui/icons-material/Lock'
 
 import { useNavigate } from 'react-router-dom'
 
+import useUserData from '../hooks/useUserData'
 import star from '../assets/star.svg'
 import calendar from '../assets/calendar.svg'
 import EmailHeader from '../components/EmailHeader'
 import Button from '../components/buttons/Button'
 
 const AddonsPage = () => {
+  const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
+  console.log(userData)
   const navigate = useNavigate()
   const styles = {
     container: {
@@ -93,13 +96,55 @@ const AddonsPage = () => {
       fontSize: '0.8rem !important'
     }
   }
+
+  const skipAddons = () => {
+    addUserData({
+      name: 'addonsPrice',
+      value: {
+        name: 'Addons price',
+        price: `$0`,
+        currency: 'USD',
+        value: 0
+      }
+    })
+    addUserData({
+      name: 'totalPrice',
+      value: {
+        name: 'Total amount paid',
+        price: `$${userData.get('trialPrice').value + userData.get('perWeekPrice').value}`,
+        value: userData.get('trialPrice').value + userData.get('perWeekPrice').value
+      }
+    })
+    navigate('/access')
+  }
+
+  const buyAddons = () => {
+    addUserData({
+      name: 'addonsPrice',
+      value: {
+        name: 'Addons price',
+        price: `$19`,
+        currency: 'USD',
+        value: 19
+      }
+    })
+    addUserData({
+      name: 'totalPrice',
+      value: {
+        name: 'Total amount paid',
+        price: `$${userData.get('trialPrice').value + userData.get('perWeekPrice').value + 19}`,
+        value: userData.get('trialPrice').value + userData.get('perWeekPrice').value + 19
+      }
+    })
+    navigate('/access')
+  }
   
   return (
     <Box sx={styles.container}>
       <EmailHeader />
       <MuiButton 
         sx={styles.skipButton} 
-        onClick={() => navigate('/access')}
+        onClick={skipAddons}
         variant="contained"
         disableElevation
         disableRipple
@@ -124,7 +169,7 @@ const AddonsPage = () => {
         <Divider sx={styles.grayDivider} />
         <Typography>These plans are <span style={styles.textBold}>yours to keep</span> even if you decide Hint isn't right for you.</Typography>
       </Box>
-      <Button onClick={() => navigate('/access')} sx={styles.button}>
+      <Button onClick={buyAddons} sx={styles.button}>
         <Box sx={styles.buttonContent}>
           <LockIcon />
           <Typography>Buy Now</Typography>

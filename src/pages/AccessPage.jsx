@@ -3,6 +3,8 @@ import {
   Typography,
 } from '@mui/material'
 
+import ReactPixel from 'react-facebook-pixel'
+
 import logo from '../assets/logo.svg'
 import accessContinue from '../assets/access-continue.png'
 import Button from '../components/buttons/Button'
@@ -10,6 +12,24 @@ import useUserData from '../hooks/useUserData'
 
 const AccessPage = () => {
   const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
+  const pixelId = localStorage.getItem('fbPixelId')
+  console.log('The pixel ID from the final page >>> ', pixelId)
+  console.log(userData)
+  ReactPixel.init('254180783380192')
+  ReactPixel.track('Purchase', {
+    value: 115.00,
+    currency: 'USD',
+    contents: [
+      {
+        id: '301',
+        quantity: 1
+      },
+      {
+        id: '401',
+        quantity: 2
+      }],
+    content_type: 'product'
+  })
   const styles = {
     container: {
       textAlign: 'center',
@@ -44,6 +64,8 @@ const AccessPage = () => {
       fontWeight: 500
     }
   }
+
+
   
   return (
     <Box sx={styles.container}>

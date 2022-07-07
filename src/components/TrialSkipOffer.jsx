@@ -6,7 +6,7 @@ import {
 import { useNavigate } from 'react-router-dom'
 import Button from './buttons/Button'
 
-const TrialSkipOffer = ({ price, totalSavings, savingPercent = 0, trial = false, buttonContent }) => {
+const TrialSkipOffer = ({ price, totalSavings, savingPercent = 0, trial = false, buttonContent, onClick }) => {
   const navigate = useNavigate()
   const styles = {
     container: {
@@ -58,7 +58,7 @@ const TrialSkipOffer = ({ price, totalSavings, savingPercent = 0, trial = false,
         <Typography sx={styles.feature}>{totalSavings}</Typography>
         <Typography sx={styles.featureName}>7-day trial</Typography>
         <Typography sx={styles.feature}>{trial ? 'yes' : 'no'}</Typography>
-        <Button onClick={() => navigate('/premiumbundle-success')} sx={styles.button}>{buttonContent}</Button>
+        <Button onClick={onClick} sx={styles.button}>{buttonContent}</Button>
       </Box>
     </Box>
   )

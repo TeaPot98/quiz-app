@@ -211,7 +211,7 @@ const CreditCardModal = ({ nextPath, open, onClose }) => {
     }
     setCardCompany(companyLogo)
     setCardError(message)
-    console.log(event.target.value, message, success, type)
+    // console.log(event.target.value, message, success, type)
   }
 
   const handleClick = () => {
