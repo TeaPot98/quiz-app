@@ -1524,7 +1524,7 @@ export const questions = {
     path: 'patterns-share-inner-self',
     type: 'quiz-simple',
     text: [
-      'Do you easily get angry or irritated?'
+      'Do you share your inner self with people you like?'
     ],
     answers: [
       {
