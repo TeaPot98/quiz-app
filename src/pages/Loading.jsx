@@ -69,7 +69,7 @@ const Loading = () => {
       return () => clearTimeout(timer)
     } else {
       const timer = setTimeout(() => {
-        console.log('Done !')
+        // console.log('Done !')
         navigate(nextPath)
       }, 200)
       return () => clearTimeout(timer)

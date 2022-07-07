@@ -13,9 +13,7 @@ import Loading from './pages/Loading'
 import EmailPage from './pages/EmailPage'
 import FinisherPage from './pages/FinisherPage'
 import PaymentPlanPage from './pages/PaymentPlanPage'
-import UpsellPage from './pages/UpsellPage'
 import PaymentPage from './pages/PaymentPage'
-import ThankYouPage from './pages/ThankYouPage'
 import AddonsPage from './pages/AddonsPage'
 import TrialSkipPage from './pages/TrialSkipPage'
 import PremiumBundleSuccess from './pages/PremiumBundleSuccess'
@@ -34,8 +32,6 @@ const App = () => {
         <Route path="/trial-pay" element={<PaymentPlanPage />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/addons" element={<AddonsPage />} />
-        <Route path="/subscribe" element={<UpsellPage />} />
-        <Route path="/thank-you" element={<ThankYouPage />} />
         <Route path="/trial-skip" element={<TrialSkipPage />} />
         <Route path="/premiumbundle-success" element={<PremiumBundleSuccess />} />
         <Route path="/access" element={<AccessPage />} />

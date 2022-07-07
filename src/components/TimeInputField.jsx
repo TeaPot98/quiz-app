@@ -50,7 +50,7 @@ const TimeInputField = ({ value, onChange }) => {
         valid: !(Number(number) > 12)
       })
     }
-    console.log('The value of time is >>> ', value)
+    // console.log('The value of time is >>> ', value)
   }
 
   const handleMinuteChange = (event) => {

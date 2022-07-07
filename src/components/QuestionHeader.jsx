@@ -65,7 +65,7 @@ const QuestionHeader = ({ question }) => {
       borderColor: '#dee5f9'
     },
   }
-  console.log('Question group', question.group)
+  // console.log('Question group', question.group)
 
   return (
     <Box sx={styles.container}>

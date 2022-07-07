@@ -19,7 +19,7 @@ const DateQuestion = ({ question }) => {
   const [month, setMonth] = useState(isSaved ? answers.get(question.path)[0].month : '')
   const [day, setDay] = useState(isSaved ? answers.get(question.path)[0].day : '')
   const [year, setYear] = useState(isSaved ? answers.get(question.path)[0].year : '')
-  console.log(days)
+  // console.log(days)
   const styles = {
     container: {
       textAlign: 'center',
@@ -52,8 +52,8 @@ const DateQuestion = ({ question }) => {
       }]
     })
 
-    console.log('The date of birth ', `${day}-${month}-${year}`)
-    console.log('You zodiac sign is', findZodiacSign(day, month))
+    // console.log('The date of birth ', `${day}-${month}-${year}`)
+    // console.log('You zodiac sign is', findZodiacSign(day, month))
 
     switch (question.path) {
       case 'date-of-birth':

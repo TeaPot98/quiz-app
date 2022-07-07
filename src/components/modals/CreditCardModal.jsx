@@ -135,7 +135,7 @@ const CreditCardModal = ({ nextPath, open, onClose }) => {
         }
       })
     }
-    console.log('The value of time is >>> ', expiryDate.month)  
+    // console.log('The value of time is >>> ', expiryDate.month)  
   }
 
   const handleYearChange = (event) => {

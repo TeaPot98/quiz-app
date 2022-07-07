@@ -11,8 +11,8 @@ import QuestionButton from '../buttons/QestionButton'
 const Question = ({ question }) => {
   const navigate = useNavigate()
   const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
-  console.log('The data from question >>>', answers)
-  console.log('User data >>> ', userData)
+  // console.log('The data from question >>>', answers)
+  // console.log('User data >>> ', userData)
   
   const styles = {
     container: {
