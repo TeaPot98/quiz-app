@@ -78,7 +78,7 @@ const TrialSkipPage = () => {
         value: 12.73
       }
     })
-    navigate('/premiumbundle-success')
+    navigate('/addons')
   }
 
   const startTrial = () => {
@@ -91,7 +91,7 @@ const TrialSkipPage = () => {
         value: 19
       }
     })
-    navigate('/premiumbundle-success')
+    navigate('/addons')
   }
   
   return (

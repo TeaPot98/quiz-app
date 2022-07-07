@@ -16,7 +16,7 @@ import Button from '../components/buttons/Button'
 
 const AddonsPage = () => {
   const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
-  console.log(userData)
+  // console.log(userData)
   const navigate = useNavigate()
   const styles = {
     container: {
@@ -115,7 +115,7 @@ const AddonsPage = () => {
         value: userData.get('trialPrice').value + userData.get('perWeekPrice').value
       }
     })
-    navigate('/access')
+    navigate('/premiumbundle-success')
   }
 
   const buyAddons = () => {
@@ -136,7 +136,7 @@ const AddonsPage = () => {
         value: userData.get('trialPrice').value + userData.get('perWeekPrice').value + 19
       }
     })
-    navigate('/access')
+    navigate('/premiumbundle-success')
   }
   
   return (

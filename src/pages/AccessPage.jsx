@@ -13,8 +13,8 @@ import useUserData from '../hooks/useUserData'
 const AccessPage = () => {
   const {userData, answers, addAnswer, addUserData, setAnswers, setUserData} = useUserData()
   const pixelId = localStorage.getItem('fbPixelId')
-  console.log('The pixel ID from the final page >>> ', pixelId)
-  console.log(userData)
+  // console.log('The pixel ID from the final page >>> ', pixelId)
+  // console.log(userData)
   // ReactPixel.init('254180783380192')
   ReactPixel.init(pixelId)
   ReactPixel.track('Purchase', {

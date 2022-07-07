@@ -48,7 +48,7 @@ const PremiumBundleSuccess = () => {
       <img style={styles.image} src={premiumBundle} slt="a man running at a mailbox with a letter in hand" />
       <Typography sx={styles.heading}>Sit tight!</Typography>
       <Typography>We are wrapping up your Premium Bundle to deliver it <span style={styles.boldText}>to your email within the next 30 minutes or less.</span> After all, good things (and Premium Bundles!) come to those who wait.</Typography>
-      <Button sx={styles.button} onClick={() => navigate('/addons')} fullWidth>Got it!</Button>
+      <Button sx={styles.button} onClick={() => navigate('/access')} fullWidth>Got it!</Button>
     </Box>
   )
 }
